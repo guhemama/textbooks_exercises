@@ -1,2 +1,1 @@
-textbooks_exercises
-===================
+Exercises from the textbooks I read.
