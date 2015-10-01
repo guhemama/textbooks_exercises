@@ -5,7 +5,7 @@ bmiTell weight height
   | bmi <= skinny = "You're underweight."
   | bmi <= normal = "You're normal."
   | bmi <= fat    = "You're fat."
-  | otherwise = "You are very fat."
+  | otherwise     = "You are very fat."
   where bmi = weight / height ^ 2
         skinny = 18.5
         normal = 25.0
