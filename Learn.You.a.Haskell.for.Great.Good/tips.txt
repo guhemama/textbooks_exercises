@@ -10,8 +10,8 @@
 !! get an element out of a list by index
 "Hello" !! 1 => "e"
 
-Eq => typeclass for types that support equality testing.
-Ord => typeclass for types that have an ordering.
+Eq   => typeclass for types that support equality testing.
+Ord  => typeclass for types that have an ordering.
 Show => presents a value whose type is a member of Show and presents it as a string.
         show 5 = "5" :: String
 Read => takes a string and returns a type which is a member of Read. You must tell the compiler what to do.
