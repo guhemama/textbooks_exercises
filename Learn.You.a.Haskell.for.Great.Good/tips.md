@@ -293,3 +293,73 @@ To use our module, we just do:
 
 Geometry.hs has to be in the same folder that the program that's importing it is
 in, though. Modules can also be given a hierarchical structures.
+
+
+# Making Our Own Types and Typeclasses
+To define a new type, use the `data` keyword.
+
+  data Bool = False | True
+  data Int = -2147483648 | -2147483647 | ... | -1 | 0 | 1 | 2 | ... | 2147483647
+  data Shape = Circle Float Float Float | Rectangle Float Float Float Float
+
+The Circle value constructor has three fields, which take floats. The Rectangle
+value constructor has four fields which accept floats.
+
+  surface :: Shape -> Float
+  surface (Circle _ _ r) = pi * r ^ 2
+  surface (Rectangle x1 y1 x2 y2) = (abs $ x2 - x1) * (abs $ y2 - y1)
+
+  ghci> surface $ Circle 10 20 10
+  314.15927
+
+Haskell doesn't know how to display our data type as a string (yet). When we try
+to print a value out in the prompt, Haskell first runs the show function to get
+the string representation of our value and then it prints that out to the terminal.
+To make our Shape type part of the Show typeclass, we modify it like this:
+
+  data Shape = Circle Float Float Float | Rectangle Float Float Float Float deriving (Show)
+
+If we wanted to export the functions and types that we defined here in a module, we could start it off like this:
+
+  module Shapes
+  ( Point(..)
+  , Shape(..)
+  , surface
+  , nudge
+  , baseCircle
+  , baseRect
+  ) where
+
+By doing Shape(..), we exported all the value constructors for Shape, so that
+means that whoever imports our module can make shapes by using the Rectangle and
+Circle value constructors. It's the same as writing Shape (Rectangle, Circle).
+
+Another way of defining data types:
+
+  data Person = Person { firstName :: String
+                     , lastName :: String
+                     , age :: Int
+                     , height :: Float
+                     , phoneNumber :: String
+                     , flavor :: String
+                     } deriving (Show)
+
+The main benefit of this is that it creates functions that lookup fields in the
+data type. By using record syntax to create this data type, Haskell automatically
+made these functions: firstName, lastName, age, height, phoneNumber and flavor.
+
+The [Char] and String types are equivalent and interchangeable. That's implemented
+with type synonyms. Type synonyms don't really do anything per se, they're just
+about giving some types different names so that they make more sense to someone
+reading our code and documentation. Here's how the standard library defines
+String as a synonym for [Char].
+
+  type String = [Char]
+
+Typeclasses are like interfaces. A typeclass defines some behavior (like comparing
+for equality, comparing for ordering, enumeration) and then types that can behave
+in that way are made instances of that typeclass. The behavior of typeclasses
+is achieved by defining functions or just type declarations that we then implement.
+So when we say that a type is an instance of a typeclass, we mean that we can
+use the functions that the typeclass defines with that type.
+
