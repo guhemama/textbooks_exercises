@@ -363,3 +363,35 @@ is achieved by defining functions or just type declarations that we then impleme
 So when we say that a type is an instance of a typeclass, we mean that we can
 use the functions that the typeclass defines with that type.
 
+
+
+# Input and output
+We glue statements together with the `do` syntax.
+
+  main = do
+      putStrLn "Hello, what's your name?"
+      name <- getLine
+      putStrLn ("Hey " ++ name ++ ", you rock!")
+
+Every I/O action that gets performed has a result encapsulated within it. Except
+for the last line, every line in a do block that doesn't bind can also be
+written with a bind.
+
+`return ()` make IO actions that don't really do anything except have an
+encapsulated result that is thrown away because it's not bound to a name.
+
+
+## Common IO functions
+`putStr`
+`putChar`
+`print` = `putStrLn . show` (prints anything that is an instance of Show)
+`getChar`
+`when`
+`sequence` (takes a list of IO actions)
+`mapM`
+`mapM_`
+`forever` (repeats the IO action forever)
+`forM`
+
+
+## Files and streams
