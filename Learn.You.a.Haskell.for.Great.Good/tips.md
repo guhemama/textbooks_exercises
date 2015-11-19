@@ -395,3 +395,69 @@ encapsulated result that is thrown away because it's not bound to a name.
 
 
 ## Files and streams
+`getContents` is an I/O action (a lazy one) that reads everything from the
+standard input until it encounters an end-of-file character.
+
+`interact` takes a function of type String -> String as a parameter and returns
+an I/O action that will take some input, run that function on it and then print
+out the function's result.
+
+`openFile` takes a file path and an IOMode and returns an I/O action that will
+open a file and have the file's associated handle encapsulated as its result.
+
+  data IOMode = ReadMode | WriteMode | AppendMode | ReadWriteMode
+
+`hGetContents` takes a file handle which tells it which file to read from.
+`hClose` takes a file handle and returns an I/O action that closes the file.
+
+Another way of doing what we just did is to use the `withFile` function
+
+  import System.IO
+
+  withFile "girlfriend.txt" ReadMode (\handle -> do
+          contents <- hGetContents handle
+          putStr contents)
+
+Other file functions:
+`hGetLine`
+`hPutStr`
+`hPutStrLn`
+`hGetChar`
+
+`readFile` takes a path to a file and returns an I/O action that will read that
+file (lazily) and bind its contents to something as a string.
+
+  contents <- readFile "girlfriend.txt"
+
+`writeFile` takes a path to a file and a string to write to that file and
+returns an I/O action that will do the writing.
+
+`appendFile` has a type signature that's just like writeFile, but it appends
+stuff to the file.
+
+`openTempFile` takes a path to a temporary directory and a template name for a
+file and opens a temporary file.
+
+`removeFile` takes a path to a file and deletes it.
+`renameFile` takes a path to a file and renames it.
+
+
+## Command line arguments
+The System.Environment module has two cool I/O actions: ene is `getArgs`, which
+gets the arguments that the program was run with and have as its contained result
+a list with the arguments, and `getProgName`, that contains the program name.
+
+
+## Randomness
+`System.Random` module has all the functions that satisfy our need for randomness.
+The function `random` has the type `random :: (RandomGen g, Random a) => g -> (a, g)`
+The typeclass `RandomGen` is for types that can act as sources of randomness.
+
+The function `randoms` that takes a generator and returns an infinite sequence
+of values based on that generator.
+
+`randomR` generates random values in a range.
+`randomRs` produces a stream of random values within our defined ranges.
+
+
+## Exceptions
