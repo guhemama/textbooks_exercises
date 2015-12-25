@@ -460,4 +460,20 @@ of values based on that generator.
 `randomRs` produces a stream of random values within our defined ranges.
 
 
-## Exceptions
+## Functors
+Functors are things that can be mapped over, like lists, Maybes, trees, and such.
+In Haskell, they're described by the typeclass  `Functor`, which has only one
+typeclass method, namely  fmap, which has a type of `fmap :: (a ­-> b) -­> f a -­> f b`.
+
+If you ever find yourself binding the result of an I/O action to a name, only to
+apply a function to that and call that something else, consider using `fmap`,
+because it looks prettier. If you want to apply multiple transformations to some
+data inside a functor, you can declare your own function at the top level, make
+a lambda function or ideally, use function composition:
+
+  import Data.Char
+  import Data.List
+
+  main = do line <- fmap (intersperse '-' . reverse . map toUpper) getLine
+            putStrLn line
+
