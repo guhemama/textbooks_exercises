@@ -2,9 +2,9 @@
 
 `val` is used to define a variable that can't be reassigned, and `var` is used to define a variable that can be reassigned.
 
-Function definitions start with `def`.The function’s name is followed by a comma-separated list of parameters in parentheses. A type annotation must follow every function parameter, preceded by a colon, because the Scala compiler does not infer function parameter types.
+Function definitions start with `def`.The function's name is followed by a comma-separated list of parameters in parentheses. A type annotation must follow every function parameter, preceded by a colon, because the Scala compiler does not infer function parameter types.
 
-Sometimes the Scala compiler will require you to specify the result type of a function. If the function is recursive, for example, you must explicitly specify the function’s result type.
+Sometimes the Scala compiler will require you to specify the result type of a function. If the function is recursive, for example, you must explicitly specify the function's result type.
 
 A result type of `Unit` indicates the function returns no interesting value.
 
@@ -54,13 +54,13 @@ val numNames = Array("zero", "one", "two")
 
 ## Lists
 
-For an immutable sequence of objects that share the same type you can use Scala’s List class.
+For an immutable sequence of objects that share the same type you can use Scala's List class.
 
 ```scala
 val oneTwoThree = List(1, 2, 3)
 ```
 
-When you call a method on a list that might seem by its name to imply the list will mutate, it instead creates and returns a new list with the new value. For example, List has a method named `:::` for list concatenation. Here’s how you use it:
+When you call a method on a list that might seem by its name to imply the list will mutate, it instead creates and returns a new list with the new value. For example, List has a method named `:::` for list concatenation. Here's how you use it:
 
 ```scala
 val oneTwo = List(1, 2)
@@ -70,7 +70,7 @@ println(oneTwo + " and " + threeFour + " were not mutated.")
 println("Thus, " + oneTwoThreeFour + " is a new list.")
 ```
 
-Perhaps the most common operator you’ll use with lists is ‘ :: ’, which is pronounced “cons.” Cons prepends a new element to the beginning of an existing list and returns the resulting list.
+Perhaps the most common operator you'll use with lists is ‘ :: ', which is pronounced “cons.” Cons prepends a new element to the beginning of an existing list and returns the resulting list.
 
 ```scala
 val twoThree = List(2, 3)
@@ -102,7 +102,7 @@ println(jetSet.contains("Cessna")) // false
 
 `jetSet += "Lear"` is a shortcode for `jetSet = jetSet + "Lear"`, because the set this immutable (by default, Scala uses `scala.collection.immutable.Set`).
 
-If you want a mutable set, you’ll need to use an import:
+If you want a mutable set, you'll need to use an import:
 
 ```scala
 import scala.collection.mutable
@@ -132,4 +132,73 @@ When you say `1 -> "Go to island."`, you are actually calling a method named `->
 ```scala
 val t = 1 -> 'Foo bar'
 // t: (Int, Char) = (1, 'b')
+```
+
+
+# Chapter 4 - Classes and Objects
+
+A class is a blueprint for objects. Once you define a class, you can create objects from the class blueprint with the keyword new . For example, given the class definition:
+
+```scala
+class ChecksumAccumulator {
+// class definition goes here
+}
+
+// You can create ChecksumAccumulator objects with:
+new ChecksumAccumulator
+```
+
+Inside a class definition, you place fields and methods, which are collectively called members. Fields, which you define with either `val` or `var`, are variables that refer to objects. Methods, which you define with def , contain executable code.
+
+Private fields can only be accessed by methods defined in the same class, all the code that can update the state will be localized to the class.
+
+```scala
+class ChecksumAccumulator {
+    private var sum = 0
+    def add(b: Byte): Unit = sum += b
+    def checksum(): Int = ~ (sum & 0xFF) + 1
+}
+```
+
+It is often better to explicitly provide the result types of public methods declared in a class even when the compiler would infer it for you.
+
+## Singleton objects
+
+A singleton object definition looks like a class definition, except instead of the keyword class you use the keyword object.
+
+When a singleton object shares the same name with a class, it is called that class's companion object. You must define both the class and its _companion object_ in the same source file. The class is called the _companion class_ of the singleton object. A class and its companion object can access each other's private members.
+
+Defining a singleton object doesn't define a type (at the Scala level of
+abstraction). Rather, the type named ChecksumAccumulator is defined by the singleton object's companion class. However, singleton objects extend a superclass and can mix in traits.
+
+A singleton object that does not share the same name with a companion
+class is called a _standalone object_. You can use standalone objects for many purposes, including collecting related utility methods together or defining an entry point to a Scala application.
+
+## A Scala application
+
+To run a Scala program, you must supply the name of a standalone singleton object with a main method that takes one parameter, an Array[String], and has a result type of Unit . Any standalone object with a main method of the proper signature can be used as the entry point into an application.
+
+```scala
+// In file Summer.scala
+import ChecksumAccumulator.calculate
+
+object Summer {
+  def main(args: Array[String]) = {
+    for (arg <- args)
+      println(arg + ": " + calculate(arg))
+  }
+}
+```
+
+## The App trait
+
+Scala provides a trait, scala.App , that can save you some finger typing. To use the trait, you first write “ extends App ” after the name of your singleton object. Then instead of writing a main method, you place the code you would have put in the main method directly between the curly braces of the singleton object. You can access command-line arguments via an array of strings named args . That’s it. You can compile and run this application just like any other.
+
+```scala
+import ChecksumAccumulator.calculate
+
+object FallWinterSpringSummer extends App {
+  for (season <- List("fall", "winter", "spring"))
+    println(season + ": " + calculate(season))
+}
 ```
