@@ -202,3 +202,259 @@ object FallWinterSpringSummer extends App {
     println(season + ": " + calculate(season))
 }
 ```
+
+
+# Chapter 5 - Basic Types and Operations
+
+## Basic types
+
+Other than `String`, which resides in package `java.lang`, all of the types
+shown below are members of package `scala`:
+
+- Byte
+- Short
+- Int
+- Long
+- Char
+- String
+- Float
+- Double
+- Boolean
+
+All of the basic types listed above can be written with literals. A literal is a way to write a constant value directly in code.
+
+Integer literals for the types Int, Long, Short, and Byte come in two forms: decimal and hexadecimal.
+
+Floating point literals are made up of decimal digits, optionally containing a decimal point, and optionally followed by an E or e and an exponent.
+
+```scala
+val big = 1.2345
+val bigger = 1.2345e2 // => 123.45
+```
+
+
+Character literals are composed of any Unicode character between single quotes, such as:
+
+```scala
+val a = 'A'
+a: Char = A
+```
+
+In addition to providing an explicit character between the single quotes, you`can identify a character using its Unicode code point. To do so, write \u followed by four hex digits with the code point.
+
+A string literal is composed of characters surrounded by double quotes.
+
+```scala
+val hello = "hello"
+hello: String = hello
+```
+
+Scala includes a special syntax for raw strings. You start and end a raw string with three double quotation marks in a row ( """ ). The interior of a raw string may contain any characters whatsoever, including newlines, quotation marks, and special characters, except of course three quotes in a row.
+
+```scala
+println("""|Welcome to Ultamix 3000.
+           |Type "HELP" for help.""".stripMargin)
+```
+
+A symbol literal is written `'ident`, where ident can be any alphanumeric identifier.
+
+The Boolean type has two literals, `true` and `false`.
+
+## String interpolation
+
+Scala includes a flexible mechanism for string interpolation, which allows you to embed expressions within string literals. Its most common use case is to provide a concise and readable alternative to string concatenation. Here's an example:
+
+```scala
+val name = "reader"
+println(s"Hello, $name!")
+```
+
+The expression, `s"Hello, $name!"` is a processed string literal. Because the letter s immediately precedes the open quote, Scala will use the _s string interpolator_ to process the literal.
+
+You can place any expression after a dollar sign ($) in a processed string
+literal. If the expression includes non-identifier characters, you must place it in curly braces, with the open curly brace immediately following the dollar sign.
+
+```scala
+s"The answer is ${6 * 7}."
+res0: String = The answer is 42.
+```
+
+Scala provides two other string interpolators by default: `raw` and `f`. The raw string interpolator behaves like `s`, except it does not recognize character literal escape sequences.
+
+The `f` string interpolator allows you to attach printf-style formatting instructions to embedded expressions.
+
+```scala
+f"${math.Pi}%.5f"
+res1: String = 3.14159
+```
+
+## Operators are methods
+
+Scala provides a rich set of operators for its basic types. These operators are actually just a nice syntax for ordinary method calls. For example, 1 + 2 really means the same thing as 1.+(2). In other words, class Int contains a method named + that takes an Int and returns an Int result. This + method is invoked when you add two Ints.
+
+## Arithmetic operations
+
+You can invoke arithmetic methods via infix operator notation for addition +, subtraction -, multiplication *, division /, and remainder % on any numeric type.
+
+## Relational and logical operations
+
+You can compare numeric types with relational methods greater than >, less than <, greater than or equal to >=, and less than or equal to <=, which yield a Boolean result. In addition, you can use the unary ! operator (the unary_! method) to invert a Boolean value.
+
+Logical methods, logical-and (&& and &) and logical-or (|| and |), take Boolean operands in infix notation and yield a Boolean result. The && and || operations short-circuit as in Java.
+
+# Bitwise operations
+
+Scala enables you to perform operations on individual bits of integer types with several bitwise methods. The bitwise methods are: bitwise-and &, bitwise-or |, and bitwise-xor ^. Scala integer types also offer three shift methods: shift left <<, shift right >>, and unsigned shift right >>>.
+
+## Object equality
+
+If you want to compare two objects for equality, you can use either `==` or its inverse `!=`.
+
+
+# Chapter 6 - Functional Objects
+
+## Checking preconditions
+
+In the case of an immutable object, you should ensure the data is valid when the object is constructed.
+
+A precondition is a constraint on values passed into a method or constructor, a requirement which callers must fulfill.
+
+```scala
+class Rational(n: Int, d: Int) {
+  require(d != 0)
+  override def toString = n + "/" + d
+}
+```
+
+The `require` method takes one boolean parameter. If the passed value is true, require will return normally. Otherwise, require will prevent the object from being constructed by throwing an `IllegalArgumentException`.
+
+## Auxiliary constructors
+
+Sometimes you need multiple constructors in a class. In Scala, constructors other than the primary constructor are called _auxiliary constructors_.
+
+Auxiliary constructors in Scala start with `def this(...)`. In Scala, every auxiliary constructor must invoke another constructor of the same class as its first action.
+
+```scala
+class Rational(n: Int, d: Int) {
+  require(d != 0)
+
+  def this(n: Int) = this(n, 1)
+}
+```
+
+## Identifiers in Scala
+
+Scala follows Java’s convention of using camel-case 5 identifiers, such as toString and HashSet. Although underscores are legal in identifiers, they are not used that often in Scala programs. Camel-case names of fields, method parameters, local variables, and functions should start with a lower case letter. Camel-case names of classes and traits should start with an upper case letter, for example: BigInt, List, and UnbalancedTreeMap.
+
+## Method overloading
+
+Scala's process of overloaded method resolution is very similar to Java's. In every case, the chosen overloaded version is the one that best matches the static types of the arguments. Sometimes there is no unique best matching version; in that case the compiler will give you an “ambiguous reference” error.
+
+
+## Implicit conversions
+
+```scala
+implicit def intToRational(x: Int) = new Rational(x)
+```
+
+This defines a conversion method from `Int` to `Rational`. The `implicit` modifier in front of the method tells the compiler to apply it automatically in a number of situations.
+
+
+# Chapter 7 - Built-in Control Structures
+
+Scala has only a handful of built-in control structures. The only control structures are `if , while , for , try , match` , and function calls. Almost all of Scala’s control structures result in some value.
+
+## For expressions
+
+Scala's `for` expression is a Swiss army knife of iteration. It lets you combine a few simple ingredients in different ways to express a wide variety of iterations.
+
+Iterate over a collection:
+
+```scala
+// The Java code returns an array
+val filesHere = (new java.io.File(".")).listFiles
+for (file <- filesHere)
+  println(file)
+
+// Ranges
+for (i <- 1 to 4)
+  println("Iteration " + i)
+
+for (i <- 1 until 4)
+  println("Iteration " + i)
+```
+
+`for` expressions can also be used to filter collections. You can use many filters at the same time.
+
+```scala
+val filesHere = (new java.io.File(".")).listFiles
+for (file <- filesHere if file.getName.endsWith(".scala"))
+  println(file)
+
+for {
+  file <- filesHere
+  if file.isFile
+  if file.getName.endsWith(".scala")
+} println(file)
+```
+
+While all of the examples so far have operated on the iterated values and then forgotten them, you can also generate a value to remember for each iteration. To do so, you prefix the body of the for expression by the keyword `yield`.
+
+```scala
+def scalaFiles =
+  for {
+    file <- filesHere
+    if file.getName.endsWith(".scala")
+  } yield file
+```
+
+## Exception handling with try expressions
+
+Scala's exceptions behave just like in many other languages. Instead of returning a value in the normal way, a method can terminate by throwing an exception. The method’s caller can either catch and handle that exception, or it can itself simply terminate, in which case the exception propagates to the caller’s caller. The exception propagates in this way, unwinding the call stack, until a method handles it or there are no more methods left.
+
+Throwing an exception in Scala looks the same as in Java. You create an exception object and then throw it with the throw keyword:
+
+```scala
+throw new IllegalArgumentException
+```
+
+You catch exceptions using the syntax shown below. The syntax for catch clauses was chosen for its consistency with an important part of Scala: pattern matching.
+
+You can wrap an expression with a finally clause if you want to cause some code to execute no matter how the expression terminates.
+
+```scala
+import java.io.FileReader
+import java.io.FileNotFoundException
+import java.io.IOException
+
+try {
+  val f = new FileReader("input.txt")
+// Use and close file
+} catch {
+  case ex: FileNotFoundException => // Handle missing file
+  case ex: IOException => // Handle other I/O error
+} finally {
+  file.close() // Be sure to close the file
+}
+```
+
+## Match expressions
+
+Scala’s match expression lets you select from a number of alternatives, just like switch statements in other languages. In general a match expression lets you select using arbitrary patterns. The default case is specified with an underscore ( _ ), a wildcard symbol frequently used in Scala as a placeholder for a completely unknown value. `match` expressions return a value.
+
+```scala
+val firstArg = if (args.length > 0) args(0) else ""
+
+val friend =
+  firstArg match {
+    case "salt" => println("pepper")
+    case "chips" => println("salsa")
+    case "eggs" => println("bacon")
+    case _ => println("huh?")
+  }
+```
+
+## Living without `break` and `continue`
+
+The simplest approach is to replace every `continue` by an if and every `break` by a boolean variable.
+
