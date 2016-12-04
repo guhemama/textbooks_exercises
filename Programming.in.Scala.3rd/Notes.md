@@ -458,3 +458,91 @@ val friend =
 
 The simplest approach is to replace every `continue` by an if and every `break` by a boolean variable.
 
+
+# Chapter 8 - Functions and Closures
+
+## First-class functions
+
+Scala has _first-class functions_. Not only can you define functions and call them, but you can write down functions as unnamed _literals_ and then pass them around as _values_.
+
+Example of a function literal that adds one to a number:
+```scala
+(x: Int) => x + 1
+```
+
+The => designates that this function converts the thing on the left (any nteger x) to the thing on the right ( x + 1 ). So, this is a function mapping any integer x to x + 1.
+
+Function values are objects, so you can store them in variables if you like. They are functions, too, so you can invoke them using the usual parentheses function-call notation. Here is an example of both activities:
+
+```scala
+val increase = (x: Int) => x + 1
+increase(10) // Int = 11
+```
+
+## Short forms of function literals
+
+Scala provides a number of ways to leave out redundant information and write function literals more briefly. One way to make a function literal more brief is to leave off the parameter types. A second way to remove useless characters is to leave out parentheses around a parameter whose type is inferred.
+
+```scala
+someNumbers.filter((x: Int) => x > 0)
+someNumbers.filter((x) => x > 0) // becomes this
+someNumbers.filter(x => x > 0) // which becomes this
+```
+
+## Placeholder syntax
+
+To make a function literal even more concise, you can use underscores as placeholders for one or more parameters, so long as each parameter appears only one time within the function literal.
+
+```scala
+someNumbers.filter(x => x > 0)
+someNumbers.filter(_ > 0) // becomes this
+```
+
+## Partially applied functions
+
+You can also replace an entire parameter list with an underscore. For example, rather than writing `println(_)`, you could write `println _`.
+
+## Special function call forms
+
+### Repeated parameters
+
+Scala allows you to indicate that the last parameter to a function may be repeated. This allows clients to pass variable length argument lists to the function. To denote a repeated parameter, place an asterisk after the type of the parameter.
+
+```scala
+def echo(args: String*) =
+  for (arg <- args) println(arg)
+
+echo()
+echo("one") // one
+echo("hello", "world!") // "hello"\n"world!"
+```
+
+Defined this way, `echo` can be called wiht zero to many String arguments. Inside the function, the type of the repeated parameter is an Array of the declared type of the parameter. Thus, the type of args inside the `echò`function, which is declared as type String* is actually Array[String].
+
+### Named arguments
+
+Named arguments allow you to pass arguments to a function in a different order. The syntax is simply that each argument is preceded by a parameter name and an equals sign.
+
+```scala
+def speed(distance: Float, time: Float): Float = distance / time
+
+speed(distance = 100, time = 10) // Float = 10.0
+speed(time = 10, distance = 100) // Float = 10.0
+```
+
+### Default parameter values
+
+Scala lets you specify default values for function parameters. The argument for such a parameter can optionally be omitted from a function call, in which case the corresponding argument will be filled in with the default.
+
+```scala
+def printTime(out: java.io.PrintStream = Console.out) =
+  out.println("time = " + System.currentTimeMillis())
+```
+
+## Tail recursion
+
+Functions which call themselves as their last action, are called _tail recursive_. The Scala compiler detects tail recursion and replaces it with a jump back to the beginning of the function, after updating the function parameters with the new values.
+
+The moral is that you should not shy away from using recursive algorithms to solve your problem. Often, a recursive solution is more elegant and concise than a loop-based one. If the solution is tail recursive, there won't be any runtime overhead to be paid.
+
+The use of tail recursion in Scala is fairly limited because the JVM instruction set makes implementing more advanced forms of tail recursion very difficult. Scala only optimizes directly recursive calls back to the same function making the call. If the recursion is indirect, no optimization is possible.
