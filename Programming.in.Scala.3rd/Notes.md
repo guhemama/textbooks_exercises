@@ -546,3 +546,64 @@ Functions which call themselves as their last action, are called _tail recursive
 The moral is that you should not shy away from using recursive algorithms to solve your problem. Often, a recursive solution is more elegant and concise than a loop-based one. If the solution is tail recursive, there won't be any runtime overhead to be paid.
 
 The use of tail recursion in Scala is fairly limited because the JVM instruction set makes implementing more advanced forms of tail recursion very difficult. Scala only optimizes directly recursive calls back to the same function making the call. If the recursion is indirect, no optimization is possible.
+
+
+# Chapter 9 - Control abstraction
+
+## Currying
+
+To understand how to make control abstractions that feel more like language extensions, you first need to understand the functional programming technique called _currying_. A curried function is applied to multiple argument lists, instead of just one.
+
+```scala
+def plainOldSum(x: Int, y: Int) = x + y
+plainOldSum(1, 2) // Int = 3
+
+def curriedSum(x: Int)(y: Int) = x + y
+curriedSum(1)(2) // Int = 3
+```
+
+Int the curried form, instead of one list of two Int parameters, you apply this function to two lists of one Int parameter each.
+
+What's happening here is that when you invoke curriedSum , you actually get two traditional function invocations back to back. The first function invocation takes a single Int parameter named x, and returns a function value for the second function. This second function takes the Int parameter y.
+
+## Writing new control structures
+
+In languages with first-class functions, you can effectively make new control structures even though the syntax of the language is fixed. All you need to do is create methods that take functions as arguments.
+
+Any time you find a control pattern repeated in multiple parts of your code, you should think about implementing it as a new control structure.
+
+```scala
+def withPrintWriter(file: File)(op: PrintWriter => Unit) = {
+  val writer = new PrintWriter(file)
+  try {
+    op(writer)
+  } finally {
+    writer.close()
+  }
+}
+
+val file = new File("date.txt")
+withPrintWriter(file) { writer =>
+  writer.println(new java.util.Date)
+}
+```
+
+In any method invocation in Scala in which you're passing in exactly one argument, you can opt to use curly braces to surround the argument instead of parentheses - which may look better.
+
+## By-name parameters
+
+What if you want to implement something more like _if_ or _while_, where there is no value to pass into the code between the curly braces? To help with such situations, Scala provides by-name parameters.
+
+To make a by-name parameter, you give the parameter a type starting with _=>_ instead of _() =>_. Now you can leave out the empty parameter in the property you want to assert.
+
+```scala
+def byNameAssert(predicate: => Boolean) =
+  if (assertionsEnabled && !predicate)
+    throw new AssertionError
+
+byNameAssert(5 > 3)
+```
+
+
+
+# Chapter 10 - Composition and inheritance
