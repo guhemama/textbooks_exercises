@@ -607,3 +607,189 @@ byNameAssert(5 > 3)
 
 
 # Chapter 10 - Composition and inheritance
+
+Composition means one class holds a reference to another, using the referenced class to help it fulfill its mission. Inheritance is the superclass/subclass relationship.
+
+## Abstract classes
+
+A class with abstract members must itself be declared abstract, which is done
+by writing an abstract modifier in front of the class keyword. A method is abstract if it does not have an implementation (i.e., no equals sign or body).
+
+```scala
+abstract class Element {
+  def contents: Array[String]
+}
+```
+
+The abstract modifier signifies that the class may have abstract members that do not have an implementation. As a result, you cannot instantiate an abstract class.
+
+## Extending classes
+
+Just like in Java, you use an extends clause after the class name to express a class extension. Class ArrayElement is defined to extend class Element.
+
+```scala
+class ArrayElement(conts: Array[String]) extends Element {
+  def contents: Array[String] = conts
+}
+```
+
+_Inheritance_ means that all members of the superclass are also members of the subclass, with two exceptions. First, private members of the superclass are not inherited in a subclass. Second, a member of a superclass is not inherited if a member with the same name and parameters is already implemented in the subclass. In that case we say the member of the subclass _overrides_ the member of the superclass.
+
+## Defining parametric fields
+
+You can avoid the code smell by combining the parameter and the field in a single _parametric field_ definition:
+
+```scala
+class ArrayElement(
+  val contents: Array[String]
+) extends Element
+```
+
+Note that now the contents parameter is prefixed by `val`. This is a shorthand that defines at the same time a parameter and field with the same name.
+
+## Invoking superclass constructors
+
+To invoke a superclass constructor, you simply place the argument or arguments you want to pass in parentheses following the name of the superclass. Below, the argument is Array(s), where `s` is the string received by LineElement.
+
+```scala
+class LineElement(s: String) extends ArrayElement(Array(s)) {
+  override def width = s.length
+  override def height = 1
+}
+```
+
+## Using override modifiers
+
+Scala requires a overried modifier for all members that override a concrete member in a parent class.
+
+
+# Chapter 12 - Traits
+
+Traits are a fundamental unit of code reuse in Scala. A trait encapsulates method and field definitions, which can then be reused by mixing them into classes. Unlike class inheritance, in which each class must inherit from just one superclass, a class can mix in any number of traits.
+
+A trait definition looks just like a class definition except that it uses the keyword `trait`. A trait also defines a type.
+
+```scala
+trait Philosophical {
+  def philosophize() = {
+    println("I consume memory, therefore I am!")
+  }
+}
+```
+
+Once a trait is defined, it can be mixed in to a class using either the `extends` or `with` keywords.
+
+```scala
+class Frog extends Philosophical {
+  override def toString = "green"
+}
+```
+
+Traits can, for example, declare fields and maintain state. In fact, you can do anything in a trait definition that you can do in a class definition, and the syntax looks exactly the same, with only two exceptions.
+
+* A trait cannot have any “class” parameters (i.e., parameters passed to the primary constructor of a class).
+* in classes, super calls are statically bound, in traits, they are dynamically bound. The implementation to invoke will be determined anew each time the trait is mixed into a concrete class.
+
+## The Ordered trait
+
+The `Ordered` trait then defines < , > , <= , and >= for you in terms of this one method. Thus, trait Ordered allows you to enrich a class with comparison methods by implementing only one method, `compare`.
+
+```scala
+class Rational(n: Int, d: Int) extends Ordered[Rational] {
+  // ...
+  def compare(that: Rational) =
+    (this.numer * that.denom) - (that.numer * this.denom)
+}
+```
+
+Ordered requires you to specify a type parameter when you mix it in. When you mix in Ordered , you must actually mix in `Ordered[C]`, where `C` is the class whose elements you compare. In this case, `Rational` mixes in `Ordered[Rational]`.
+
+You also need to do is define a `compare` method for comparing two objects. This method should compare the receiver, `this`, with the object passed as an argument to the method. It should return an integer that is zero if the objects are the same, negative if receiver is less than the argument, and positive if the receiver is greater than the argument.
+
+
+# Chapter 13 - Packages and Imports
+
+## Putting code in packages
+
+Scala code resides in the Java platform's global hierarchy of packages.
+
+```scala
+package com.bobsrockets.navigation
+class Navigator
+```
+
+## Concise access to related code
+
+When code is divided into a package hierarchy, it doesn't just help people browse through the code. It also tells the compiler that code in the same package is related in some way to each other. Scala takes advantage of this relatedness by allowing short, unqualified names when accessing code that is in the same package.
+
+## Imports
+
+In Scala, packages and their members can be imported using import clauses. Imported items can then be accessed by a simple name like `File`, as opposed to requiring a qualified name like `java.io.File`.
+
+```scala
+// easy access to Fruit
+import bobsdelights.Fruit
+
+// easy access to all members of bobsdelights
+import bobsdelights._
+
+// easy access to all members of Fruits
+import bobsdelights.Fruits._
+
+package bobsdelights
+
+abstract class Fruit(
+  val name: String,
+  val color: String
+)
+
+object Fruits {
+  object Apple extends Fruit("apple", "red")
+  object Orange extends Fruit("orange", "orange")
+  object Pear extends Fruit("pear", "yellowish")
+  val menu = List(Apple, Orange, Pear)
+}
+```
+
+Imports in Scala can appear anywhere, not just at the beginning of a compilation unit. Also, they can refer to arbitrary values.
+
+Imports in Scala can also rename or hide members. This is done with an import selector clause enclosed in braces, which follows the object from which members are imported.
+
+This imports just members `Apple` and `Orange` from object `Fruits`:
+
+```scala
+import Fruits.{Apple, Orange}
+```
+
+```scala
+import Fruits.{Apple => McIntosh, Orange}
+```
+
+This imports the two members `Apple` and `Orange` from object `Fruits` and renames the `Apple` object to `McIntosh`,so this object can be accessed with either `Fruits.Apple` or `McIntosh`.
+
+## Package objects
+
+Each package is allowed to have one package object. Any definitions placed in a package object are considered members of the package itself. Any other code in any package can import the method just like it would import a class.
+
+```scala
+// In file bobsdelights/package.scala
+package object bobsdelights {
+  def showFruit(fruit: Fruit) = {
+    import fruit._
+    println(name + "s are " + color)
+  }
+}
+
+// In file PrintMenu.scala
+package printmenu
+import bobsdelights.Fruits
+import bobsdelights.showFruit
+
+object PrintMenu {
+  def main(args: Array[String]) = {
+    for (fruit <- Fruits.menu) {
+      showFruit(fruit)
+    }
+  }
+}
+```
