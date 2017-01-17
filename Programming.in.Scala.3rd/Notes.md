@@ -14,7 +14,7 @@ A result type of `Unit` indicates the function returns no interesting value.
 
 In Scala, you can instantiate objects, or class instances, using new . When
 you instantiate an object in Scala, you can parameterize it with values and
-types. Parameterization means “configuring” an instance when you create it.
+types. Parameterization means "configuring" an instance when you create it.
 You parameterize an instance with types by specifying one or more types
 in square brackets.
 
@@ -70,7 +70,7 @@ println(oneTwo + " and " + threeFour + " were not mutated.")
 println("Thus, " + oneTwoThreeFour + " is a new list.")
 ```
 
-Perhaps the most common operator you'll use with lists is ‘ :: ', which is pronounced “cons.” Cons prepends a new element to the beginning of an existing list and returns the resulting list.
+Perhaps the most common operator you'll use with lists is ‘ :: ', which is pronounced "cons." Cons prepends a new element to the beginning of an existing list and returns the resulting list.
 
 ```scala
 val twoThree = List(2, 3)
@@ -192,7 +192,7 @@ object Summer {
 
 ## The App trait
 
-Scala provides a trait, scala.App , that can save you some finger typing. To use the trait, you first write “ extends App ” after the name of your singleton object. Then instead of writing a main method, you place the code you would have put in the main method directly between the curly braces of the singleton object. You can access command-line arguments via an array of strings named args . That’s it. You can compile and run this application just like any other.
+Scala provides a trait, scala.App , that can save you some finger typing. To use the trait, you first write " extends App " after the name of your singleton object. Then instead of writing a main method, you place the code you would have put in the main method directly between the curly braces of the singleton object. You can access command-line arguments via an array of strings named args . That's it. You can compile and run this application just like any other.
 
 ```scala
 import ChecksumAccumulator.calculate
@@ -344,11 +344,11 @@ class Rational(n: Int, d: Int) {
 
 ## Identifiers in Scala
 
-Scala follows Java’s convention of using camel-case 5 identifiers, such as toString and HashSet. Although underscores are legal in identifiers, they are not used that often in Scala programs. Camel-case names of fields, method parameters, local variables, and functions should start with a lower case letter. Camel-case names of classes and traits should start with an upper case letter, for example: BigInt, List, and UnbalancedTreeMap.
+Scala follows Java's convention of using camel-case 5 identifiers, such as toString and HashSet. Although underscores are legal in identifiers, they are not used that often in Scala programs. Camel-case names of fields, method parameters, local variables, and functions should start with a lower case letter. Camel-case names of classes and traits should start with an upper case letter, for example: BigInt, List, and UnbalancedTreeMap.
 
 ## Method overloading
 
-Scala's process of overloaded method resolution is very similar to Java's. In every case, the chosen overloaded version is the one that best matches the static types of the arguments. Sometimes there is no unique best matching version; in that case the compiler will give you an “ambiguous reference” error.
+Scala's process of overloaded method resolution is very similar to Java's. In every case, the chosen overloaded version is the one that best matches the static types of the arguments. Sometimes there is no unique best matching version; in that case the compiler will give you an "ambiguous reference" error.
 
 
 ## Implicit conversions
@@ -362,7 +362,7 @@ This defines a conversion method from `Int` to `Rational`. The `implicit` modifi
 
 # Chapter 7 - Built-in Control Structures
 
-Scala has only a handful of built-in control structures. The only control structures are `if , while , for , try , match` , and function calls. Almost all of Scala’s control structures result in some value.
+Scala has only a handful of built-in control structures. The only control structures are `if , while , for , try , match` , and function calls. Almost all of Scala's control structures result in some value.
 
 ## For expressions
 
@@ -410,7 +410,7 @@ def scalaFiles =
 
 ## Exception handling with try expressions
 
-Scala's exceptions behave just like in many other languages. Instead of returning a value in the normal way, a method can terminate by throwing an exception. The method’s caller can either catch and handle that exception, or it can itself simply terminate, in which case the exception propagates to the caller’s caller. The exception propagates in this way, unwinding the call stack, until a method handles it or there are no more methods left.
+Scala's exceptions behave just like in many other languages. Instead of returning a value in the normal way, a method can terminate by throwing an exception. The method's caller can either catch and handle that exception, or it can itself simply terminate, in which case the exception propagates to the caller's caller. The exception propagates in this way, unwinding the call stack, until a method handles it or there are no more methods left.
 
 Throwing an exception in Scala looks the same as in Java. You create an exception object and then throw it with the throw keyword:
 
@@ -440,7 +440,7 @@ try {
 
 ## Match expressions
 
-Scala’s match expression lets you select from a number of alternatives, just like switch statements in other languages. In general a match expression lets you select using arbitrary patterns. The default case is specified with an underscore ( _ ), a wildcard symbol frequently used in Scala as a placeholder for a completely unknown value. `match` expressions return a value.
+Scala's match expression lets you select from a number of alternatives, just like switch statements in other languages. In general a match expression lets you select using arbitrary patterns. The default case is specified with an underscore ( _ ), a wildcard symbol frequently used in Scala as a placeholder for a completely unknown value. `match` expressions return a value.
 
 ```scala
 val firstArg = if (args.length > 0) args(0) else ""
@@ -687,7 +687,7 @@ class Frog extends Philosophical {
 
 Traits can, for example, declare fields and maintain state. In fact, you can do anything in a trait definition that you can do in a class definition, and the syntax looks exactly the same, with only two exceptions.
 
-* A trait cannot have any “class” parameters (i.e., parameters passed to the primary constructor of a class).
+* A trait cannot have any "class" parameters (i.e., parameters passed to the primary constructor of a class).
 * in classes, super calls are statically bound, in traits, they are dynamically bound. The implementation to invoke will be determined anew each time the trait is mixed into a concrete class.
 
 ## The Ordered trait
@@ -793,3 +793,69 @@ object PrintMenu {
   }
 }
 ```
+
+
+
+# Chapter 15 - Case Classes and Pattern Matching
+
+Case classes are Scala's way to allow pattern matching on objects without requiring a large amount of boilerplate.
+
+Classes with the `case` modifier are called case classes. Using the modifier makes the Scala compiler add some syntactic conveniences to your class.
+
+First, it adds a factory method with the name of the class. This means that, for instance, you can write `Var("x")` to construct a Var object, instead of the slightly longer `new Var("x")`.
+
+The second syntactic convenience is that all arguments in the parameter list of a case class implicitly get a `val` prefix, so they are maintained as fields.
+
+Third, the compiler adds "natural" implementations of methods `toString`, `hashCode` , and `equals` to your class.
+
+Finally, the compiler adds a copy method to your class for making modified copies.
+
+Also, this allows Scala to easily implement pattern matching (just like what I saw in Haskell):
+
+```scala
+def simplifyTop(expr: Expr): Expr = expr match {
+  case UnOp("-", UnOp("-", e)) => e   // Double negation
+  case BinOp("+", e, Number(0)) => e // Adding zero
+  case BinOp("*", e, Number(1)) => e
+  case _ => expr // Multiplying by one
+}
+```
+
+## Kinds of patterns
+
+* The wildcard pattern `(_)` matches any object whatsoever.
+* A constant pattern matches only itself. Any literal may be used as a constant. For example, `5`, `true`, and `"hello"` are all constant patterns.
+* A variable pattern matches any object, just like a wildcard. But unlike a
+wildcard, Scala binds the variable to whatever the object is.
+* Constructors are where pattern matching becomes really powerful. A constructor pattern looks like `BinOp("+", e, Number(0))`.
+* You can match against sequence types, like List or Array , just like you
+match against case classes. `case List(0, _, _) => println("found it")`. If you want to match against a sequence without specifying how long it can be, you can specify `_*` as the last element of the pattern.
+* You can match against tuples too. A pattern like `(a, b, c)` matches an
+arbitrary 3-tuple.
+* You can use a typed pattern as a convenient replacement for type tests and
+type casts. `case s: String => s.length`
+
+## Pattern guards
+
+A pattern guard comes after a pattern and starts with an `if`. The guard can be an arbitrary boolean expression, which typically refers to variables in the pattern. If a pattern guard is present, the match succeeds only if the guard evaluates to `true`.
+
+```scala
+def simplifyAdd(e: Expr) = e match {
+  case BinOp("+", x, y) if x == y => BinOp("*", x, Number(2))
+  case _ => e
+}
+```
+
+## Sealed classes
+
+You can enlist the help of the Scala compiler in detecting missing combinations of patterns in a match expression. To do this, the compiler needs to be able to tell which are the possible cases. To do that, you make the superclass of your case classes `sealed`. A sealed class cannot have any new subclasses added except the ones in the same file.
+
+If you write a hierarchy of classes intended to be pattern matched, you should consider sealing them. Simply put the `sealed` keyword in front of the class at the top of the hierarchy.
+
+## The `Option` type
+
+Scala has a standard type named `Option` for optional values - kinda like `null`, but type-safe. Such a value can be of two forms: `Some(x)` , where x is the actual value, or the `None` object, which represents a missing value.
+
+
+# Chapter 16 - Working with lists
+
