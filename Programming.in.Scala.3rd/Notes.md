@@ -859,3 +859,36 @@ Scala has a standard type named `Option` for optional values - kinda like `null`
 
 # Chapter 16 - Working with lists
 
+Lists are similar to arrays, but they are immutable. They also have a recursive structure, whereas arrays are flat (because they are use adjacent memory locations). Lists, just like arrays, are homogenous: the elements of a list all have the same type.
+
+List are build from two fundamental building blocks `Nil` and `::` (cons). They can also be used to pattern match lists.
+
+## Operations on lists
+
+All list operations can be expressed in terms of `head`, `tail` and `isEmpty`.
+
+`:::` concatenates two lists.
+`last` returns the last element of a list.
+`init` returns all elements of a list but the last one.
+`reverse` reverses a list.
+`take` returns the first _n_ elements of a list.
+`drop` returns all elements of a list but the first _n_ ones.
+`splitAt` splits the list at a given index, returning two lists.
+`flatten` takes a list of lists and flattens it out to a single list.
+`zip` takes two lists and forms a list of pairs.
+`unzip` transforms any list of tuples back into a tuple of lists.
+`toString` returns the canonical string representation of a list.
+`mkString` formats the string representation of a list.
+`List.toArray` transforms a list into an array.
+`Array.toList` transforms an array into a list.
+`map` returns the list after applying a function _f_ to it.
+`flatMap` it applies a function _f_ to each list element and returns the concatenation of all function results.
+`foreach` applies a procedure to each list element.
+`filter` filters a list based on a predicate _p_.
+`partition` filters a list based on a predicate _p_ and returns two lists: one with elements where predicate is true, and the other with elements where the predicate is false.
+`find` returns the first element that matches a predicate.
+`takeWhile` 
+`dropWhile`
+`span` combines `takeWhile` and `dropWhile`, returning a pair of lists.
+`forall` returns true if all elements of a list satisfy a predicate _p_.
+`exists` returns true if any element of a list satisfy a predicate _p_.
