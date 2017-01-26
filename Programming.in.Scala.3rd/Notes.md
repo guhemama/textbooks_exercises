@@ -887,8 +887,49 @@ All list operations can be expressed in terms of `head`, `tail` and `isEmpty`.
 `filter` filters a list based on a predicate _p_.
 `partition` filters a list based on a predicate _p_ and returns two lists: one with elements where predicate is true, and the other with elements where the predicate is false.
 `find` returns the first element that matches a predicate.
-`takeWhile` 
+`takeWhile`
 `dropWhile`
 `span` combines `takeWhile` and `dropWhile`, returning a pair of lists.
 `forall` returns true if all elements of a list satisfy a predicate _p_.
 `exists` returns true if any element of a list satisfy a predicate _p_.
+
+### Folding lists
+
+Another common kind of operation combines the elements of a list with some operator.
+
+`sum(List(a, b, c))` equals `0 + a + b + c`
+
+Which is a special instance of a fold operation:
+
+`def sum(xs: List[Int]): Int = (0 /: xs) (_ + _)`
+
+A _fold left_ operation "(z /: xs) (op)" involves three objects: a start value `z`, a list `xs`, and a binary operation `op`. The result of the fold is `op` applied between successive elements of the list prefixed by `z`.
+
+`(z /: List(a, b, c)) (op)` equals `op(op(op(z, a), b), c)`
+
+The `/:` operator produces left-leaning operation trees (its syntax with the slash rising forward is intended to be a reflection of that). The operator has `:\` as an analog that produces right-leaning trees.
+
+`(List(a, b, c) :\ z) (op)` equals `op(a, op(b, op(c, z)))`
+
+You can also use the `foldLeft` and `foldRight` methods from class `List`.
+
+### Sorting lists
+
+`sortWith` lets a list to be sorted by using a comparison function.
+
+```scala
+val l1 = List(1, -3, 4, 2, 6) sortWith (_ < _)
+// List(-3, 1, 2, 4, 6)
+
+val l2 = List("the", "quick", "brown", "fox") sortWith (_.length > _.length)
+// List(quick, brown, the, fox)
+```
+
+## Methods of the `List` object
+
+`List.range(from, until)` creates a list consisting of a range of numbers.
+`List.fill` creates a list consisting of zero or more copies of the same element.
+`List.tabulate(n)(fn)` creates a list whose elements are computed according
+to a supplied function.
+`List.concat` concatenates a number of element lists.
+
