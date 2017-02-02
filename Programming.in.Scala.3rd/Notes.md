@@ -948,3 +948,41 @@ Sequence types let you work with groups of data lined up in order. Because the e
 
 ## Sets and maps
 
+The Scala collections library offers both mutable and immutable versions of sets and maps (by default they're immutable).
+
+### Sets
+
+Defined by class `Set` (either mutable or immutable). The key characteristic of sets is that they will ensure that at most one of each object, as determined by `==`, will be contained in the set at any one time.
+
+### Maps
+
+Defined by class `Map`. Maps let you associate a value with each element of a set.
+
+### Default sets and maps
+
+For most uses, the implementations of mutable and immutable sets and maps provided by the `Set()`, `scala.collection.mutable.Map()` , etc., factories will likely be sufficient. The implementations provided by these factories use a fast lookup algorithm, usually involving a hash table, so they can quickly decide whether or not an object is in the collection.
+
+### Sorted sets and maps
+
+On occasion you may need a set or map whose iterator returns elements in a particular order. You can leverage `SortedSet` and `SortedMap` in these cases.
+
+## Selecting mutable versus immutable collections
+
+For some problems, mutable collections work better, while for others, immutable collections work better. When in doubt, it is better to start with an immutable collection and change it later, if you need to, because immutable collections can be easier to reason about than mutable ones.
+
+## Tuples
+
+A tuple combines a fixed number of items together so that they can be passed around as a whole. A common application of tuples is returning multiple values from a method. To access elements of a tuple, you can use method `_1` to access the first element, `_2` to access the second, and so on.
+
+```scala
+val tpl = ("foo", 1)
+tpl._1 // "foo"
+tpl._2 // 1
+
+// assign each element to a variable
+val (word, idx) = tpl
+```
+
+
+
+
