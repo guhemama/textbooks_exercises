@@ -867,31 +867,31 @@ List are build from two fundamental building blocks `Nil` and `::` (cons). They 
 
 All list operations can be expressed in terms of `head`, `tail` and `isEmpty`.
 
-`:::` concatenates two lists.
-`last` returns the last element of a list.
-`init` returns all elements of a list but the last one.
-`reverse` reverses a list.
-`take` returns the first _n_ elements of a list.
-`drop` returns all elements of a list but the first _n_ ones.
-`splitAt` splits the list at a given index, returning two lists.
-`flatten` takes a list of lists and flattens it out to a single list.
-`zip` takes two lists and forms a list of pairs.
-`unzip` transforms any list of tuples back into a tuple of lists.
-`toString` returns the canonical string representation of a list.
-`mkString` formats the string representation of a list.
-`List.toArray` transforms a list into an array.
-`Array.toList` transforms an array into a list.
-`map` returns the list after applying a function _f_ to it.
-`flatMap` it applies a function _f_ to each list element and returns the concatenation of all function results.
-`foreach` applies a procedure to each list element.
-`filter` filters a list based on a predicate _p_.
-`partition` filters a list based on a predicate _p_ and returns two lists: one with elements where predicate is true, and the other with elements where the predicate is false.
-`find` returns the first element that matches a predicate.
-`takeWhile`
-`dropWhile`
-`span` combines `takeWhile` and `dropWhile`, returning a pair of lists.
-`forall` returns true if all elements of a list satisfy a predicate _p_.
-`exists` returns true if any element of a list satisfy a predicate _p_.
+* `:::` concatenates two lists.
+* `last` returns the last element of a list.
+* `init` returns all elements of a list but the last one.
+* `reverse` reverses a list.
+* `take` returns the first _n_ elements of a list.
+* `drop` returns all elements of a list but the first _n_ ones.
+* `splitAt` splits the list at a given index, returning two lists.
+* `flatten` takes a list of lists and flattens it out to a single list.
+* `zip` takes two lists and forms a list of pairs.
+* `unzip` transforms any list of tuples back into a tuple of lists.
+* `toString` returns the canonical string representation of a list.
+* `mkString` formats the string representation of a list.
+* `List.toArray` transforms a list into an array.
+* `Array.toList` transforms an array into a list.
+* `map` returns the list after applying a function _f_ to it.
+* `flatMap` it applies a function _f_ to each list element and returns the concatenation of all function results.
+* `foreach` applies a procedure to each list element.
+* `filter` filters a list based on a predicate _p_.
+* `partition` filters a list based on a predicate _p_ and returns two lists: one with elements where predicate is true, and the other with elements where the predicate is false.
+* `find` returns the first element that matches a predicate.
+* `takeWhile`
+* `dropWhile`
+* `span` combines `takeWhile` and `dropWhile`, returning a pair of lists.
+* `forall` returns true if all elements of a list satisfy a predicate _p_.
+* `exists` returns true if any element of a list satisfy a predicate _p_.
 
 ### Folding lists
 
@@ -927,9 +927,24 @@ val l2 = List("the", "quick", "brown", "fox") sortWith (_.length > _.length)
 
 ## Methods of the `List` object
 
-`List.range(from, until)` creates a list consisting of a range of numbers.
-`List.fill` creates a list consisting of zero or more copies of the same element.
-`List.tabulate(n)(fn)` creates a list whose elements are computed according
+* `List.range(from, until)` creates a list consisting of a range of numbers.
+* `List.fill` creates a list consisting of zero or more copies of the same element.
+* `List.tabulate(n)(fn)` creates a list whose elements are computed according
 to a supplied function.
-`List.concat` concatenates a number of element lists.
+* `List.concat` concatenates a number of element lists.
+
+
+# Chatper 17 - Working with other collections
+
+## Sequences
+
+Sequence types let you work with groups of data lined up in order. Because the elements are ordered, you can ask for the first element, second element, and so on.
+
+* `List`: immutable linked-list.
+* `Array`: it allows you to hold a sequence of elements and efficiently access an element at an arbitrary position, either to get or update the element, with a zero-based index.
+* `ListBuffer`: it's a mutable object (contained in package `scala.collection.mutable`), which can help you build lists more efficiently when you need to append.
+* `ArrayBuffer`: it's like an array, except that you can additionally add and remove elements from the beginning and end of the sequence. The `ArrayBuffer` will adjust the allocated space automatically as needed.
+* `StringOps`: strings can be automatically converted into a `StringOps`, which supports many sequence methods.
+
+## Sets and maps
 
