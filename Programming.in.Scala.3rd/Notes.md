@@ -985,4 +985,85 @@ val (word, idx) = tpl
 
 
 
+# Chapter 19 - Type parametrization
 
+Type parameterization allows you to write generic classes and traits. For example, sets are generic and take a type parameter: they are defined as `Set[T]` . As a result, any particular set instance might be a `Set[String]`, a `Set[Int]` , etc., but it must be a set of something.
+
+## Functional queues
+
+A functional queue is a data structure with three operations:
+
+* `head`: returns the first element of the queue
+* `tail`: returns a queue without its first element
+* `enqueue`: returns a new queue with a given element appended at the end
+
+Unlike a mutable queue, a functional queue does not change its contents when an element is appended. Instead, a new queue is returned that contains the element.
+
+In Java, you can hide a constructor by making it `private`. In Scala, the primary constructor does not have an explicit definition; it is defined implicitly by the class parameters and body. Nevertheless, it is still possible to hide the primary constructor by adding a `private` modifier in front of the class parameter list:
+
+```scala
+class Queue[T] private (
+  private val leading: List[T],
+  private val trailing: List[T]
+)
+```
+
+A private constructor can be accessed only from within the class itself and its companion object.
+
+## Variance
+
+The Scala compiler will check any variance annotations you place on type parameters. For example, if you try to declare a type parameter to be covariant (by adding a `+`, e.g. `Queue[+T]`), but that could lead to potential runtime errors, your program won’t compile.
+
+## Covariance
+
+It is safe to assume that a type T is a subtype of a type U if you can substitute a value of type T wherever a value of type U is required. This is called the _Liskov Substitution Principle_.
+
+
+
+# Chapter 20 - Abstract members
+
+A member of a class or trait is abstract if the member does not have a complete definition in the class. Abstract members are intended to be implemented in subclasses of the class in which they are declared. But Scala goes beyond that and implements the idea in its full generality: besides methods, you can declare abstract fields and even abstract types as members of classes and traits.
+
+The following trait declares one of each kind of abstract member: an abstract
+type (`T`), method (`transform`), `val` (`initial`), and `var` (`current`):
+
+```scala
+trait Abstract {
+  type T
+  def transform(x: T): T
+  val initial: T
+  var current: T
+}
+```
+
+## Type members
+
+One reason to use a type member is to define a short, descriptive alias for a type whose real name is more verbose, or less obvious in meaning, than the alias. Such type members can help clarify the code of a class or trait. The other main use of type members is to declare abstract types that must be defined in subclasses.
+
+## Abstract `val`s
+
+Abstract `val`s sometimes play a role analogous to superclass parameters: they let you provide details in a subclass that are missing in a superclass. This is particularly important for traits, because traits don’t have a constructor to which you could pass parameters. So the usual notion of parameterizing a trait works via abstract `val`s that are implemented in subclasses.
+
+## Refinement types
+
+When a class inherits from another, the first class is said to be a _nominal_
+subtype of the other one. It’s a _nominal_ subtype because each type has a _name_, and the names are explicitly declared to have a subtyping relationship. Scala additionally supports _structural_ subtyping, where you get a subtyping relationship simply because two types have compatible members. To get structural subtyping in Scala, use Scala’s _refinement types_.
+
+In the definition below, the members in the curly braces further specify - or refine, if you will - the types of members from the base class.
+
+```scala
+Animal { type SuitableFood = Grass }
+
+class Pasture {
+  var animals: List[Animal { type SuitableFood = Grass }] = Nil
+  // ...
+}
+```
+
+## Enumerations
+
+To create a new enumeration, you define an object that extends the class `scala.Enumeration`, as in the following example:
+
+
+
+# Chapter 21 - Implicit Conversions and Parameters
