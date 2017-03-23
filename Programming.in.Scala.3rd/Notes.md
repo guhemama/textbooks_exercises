@@ -1067,3 +1067,38 @@ To create a new enumeration, you define an object that extends the class `scala.
 
 
 # Chapter 21 - Implicit Conversions and Parameters
+
+## Implicit conversions
+
+Implicit conversions are often helpful for working with two bodies of software that were developed without each other in mind.
+
+Implicit definitions are those that the compiler is allowed to insert into a program in order to fix any of its type errors. For example, if `x + y` does not type check, then the compiler might change it to `convert(x) + y`, where convert is some available implicit conversion. If convert changes `x` into something that has a `+` method, then this change might fix a program so that it type checks and runs correctly. If convert really is just a simple conversion function, then leaving it out of the source code can be a clarification.
+
+Implicit conversions are governed by the following general rules:
+
+- **Marking rule**: only definitions marked `implicit` are available. The `implicit` keyword is used to mark which declarations the compiler may use as implicits.
+- **Scope rule**: an inserted implicit conversion must be in scope as a single
+identifier, or be associated with the source or target type of the conversion. The Scala compiler will only consider implicit conversions that are in scope. It is common for libraries to include a `Preamble` object including a number of
+useful implicit conversions.
+- **One-at-a-time rule**: only one implicit is inserted.
+- **Explicits-first rule**: whenever code type checks as it is written, no implicits are attempted.
+- **Naming an implicit conversion**: implicit conversions can have arbitrary names.
+
+## Implicit conversion to an expected type
+
+Implicit conversion to an expected type is the first place the compiler will use implicits. The rule is simple. Whenever the compiler sees an X, but needs
+a Y, it will look for an implicit function that converts X to Y. For example, normally a double cannot be used as an integer because it loses precision. However, you can define an implicit conversion to smooth this over:
+
+```scala
+scala> implicit def doubleToInt(x: Double) = x.toInt
+doubleToInt: (x: Double)Int
+scala> val i: Int = 3.5
+i: Int = 3
+```
+
+## Converting the receiver
+
+Implicit conversions also apply to the receiver of a method call, the object on which the method is invoked. This kind of implicit conversion has two main
+uses: integration of a new class, and support for writing domain-specific languages (DSLs) within the language.
+
+## Implicit parameters
