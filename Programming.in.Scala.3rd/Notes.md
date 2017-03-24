@@ -1101,4 +1101,28 @@ i: Int = 3
 Implicit conversions also apply to the receiver of a method call, the object on which the method is invoked. This kind of implicit conversion has two main
 uses: integration of a new class, and support for writing domain-specific languages (DSLs) within the language.
 
-## Implicit parameters
+
+
+# Chapter 22 - Implementing lists
+
+Knowing the internal workings of the List class is useful for several reasons. You gain a better idea of the relative efficiency of list operations, which will help you in writing fast and compact code using lists. You also gain a toolbox of techniques that you can apply in the design of your own libraries.
+
+All list operations can be defined in terms of three basic methods:
+
+```scala
+def isEmpty: Boolean
+def head: T
+def tail: List[T]
+```
+
+## The `ListBuffer` class
+
+ListBuffer is a class in package `scala.collection.mutable`. It lets you accumulate the elements of a list. To do this, you use an operation such as `buf += elem`, which appends the element elem at the end of the list buffer `buf` . Once you are done appending elements, you can turn the buffer into a list using the `toList` operation.
+
+This is a very efficient way to build lists. In fact, the list buffer implementation is organized so that both the append operation (`+=`) and the `toList` operation take (very short) constant time.
+
+You can either construct lists incrementally by adding elements to the beginning of a list using `::`, or you use a list buffer for adding elements to the end. Which one is preferable depends on the situation. Usually, `::` lends itself well to recursive algorithms in the divide-and-conquer style, and list buffers are often used in a more traditional loop-based style.
+
+
+
+# Chapter 23 - For expressions revisited
