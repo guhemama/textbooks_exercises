@@ -1126,3 +1126,29 @@ You can either construct lists incrementally by adding elements to the beginning
 
 
 # Chapter 23 - For expressions revisited
+
+Generally, a for expression is of the form:
+
+```scala
+for ( seq ) yield expr
+```
+
+Here, _seq_ is a sequence of _generators_, _definitions_, and _filters_, with semicolons between successive elements.
+
+```scala
+for (p <- persons; n = p.name; if (n startsWith "To"))
+yield n
+
+for {
+  p <- persons           // a generator
+  n = p.name             // a definition
+  if (n startsWith "To") // a filter
+} yield n
+```
+
+Every `for` expression can be expressed in terms of the three higher-order
+functions `map`, `flatMap`, and `withFilter`.
+
+
+
+# Chapter 24 - 
