@@ -1151,4 +1151,291 @@ functions `map`, `flatMap`, and `withFilter`.
 
 
 
-# Chapter 24 - 
+# Chapter 24 - Colletions in depth
+
+## Mutable and immutable collections
+
+Scala collections systematically distinguish between mutable and immutable collections. A mutable collection can be updated or extended in place. Immutable collections, by contrast, never change.
+
+All collection classes are found in the package `scala.collection` or one of its subpackages: `mutable`, `immutable`, and `generic`. By default, Scala always picks immutable collections, because these are the default bindings imported from the `scala` package. To get the mutable default versions, you need to write explicitly `collection.mutable.Set`, or `collection.mutable.Iterable`, for example.
+
+
+## Collections consistency
+
+The most important collection classes are:
+
+```scala
+Traversable
+  Iterable
+    Seq
+      IndexedSeq
+        Vector
+        ResizableArray
+        GenericArray
+      LinearSeq
+        MutableList
+        List
+        Stream
+      Buffer
+        ListBuffer
+        ArrayBuffer
+    Set
+      SortedSet
+        TreeSet
+      HashSet (mutable)
+      LinkedHashSet
+      HashSet (immutable)
+      BitSet
+      EmptySet, Set1, Set2, Set3, Set4
+    Map
+      SortedMap
+        TreeMap
+      HashMap (mutable)
+      LinkedHashMap (mutable)
+      HashMap (immutable)
+      EmptyMap, Map1, Map2, Map3, Map4
+```
+
+
+## Trait `Traversable`
+
+At the top of the collection hierarchy is trait `Traversable`. Its only abstract operation is `foreach`:
+
+```scala
+def foreach[U](f: Elem => U)
+```
+
+Collection classes implementing `Traversable` just need to define this
+method; all other methods can be inherited from `Traversable`. The `foreach` method is meant to traverse all elements of the collection, and apply the given operation, `f`, to each element.
+
+
+## Trait `Iterable`
+
+All methods in this trait are defined in terms of an abstract method, `iterator`, which yields the collection’s elements one by one. The abstract `foreach` method inherited from trait `Traversable` is implemented in `Iterable` in terms of `iterator`.
+
+```scala
+def foreach[U](f: Elem => U): Unit = {
+  val it = iterator
+  while (it.hasNext) f(it.next())
+}
+```
+
+### Why have both `Traversable` and `Iterable`?
+
+One reason for having `Traversable` is that sometimes it is easier or more efficient to provide an implementation of `foreach` than to provide an implementation of `iterator`.
+
+
+## The sequence traits `Seq`, `IndexedSeq`, and `LinearSeq`
+
+The `Seq` trait represents sequences. A sequence is a kind of iterable that has
+a `length` and whose elements have fixed index positions, starting from 0.
+
+The operations on sequences, fall into the following categories:
+
+* _Indexing and length operations_ `apply`, `isDefinedAt`, `length`, `indices`, and `lengthCompare`.
+* _Index search operations_ `indexOf`, `lastIndexOf`, `indexOfSlice`, `lastIndexOfSlice`, `indexWhere`, `lastIndexWhere`, `segmentLength`, and `prefixLength`, which return the index of an element equal to a given value or matching some predicate.
+* _Addition operations_ `+:`, `:+`, and `padTo`, which return new sequences obtained by adding elements at the front or the end of a sequence.
+* _Update operations_ `updated` and `patch`, which return a new sequence obtained by replacing some elements of the original sequence.
+* _Sorting operations_ `sorted`, `sortWith`, and `sortBy`, which sort sequence elements according to various criteria.
+* _Reversal operations_ `reverse`, `reverseIterator`, and `reverseMap`, which yield or process sequence elements in reverse order, from last to first.
+* _Comparison operations_ `startsWith`, `endsWith`, `contains`, `corresponds`, and `containsSlice`, which relate two sequences or search an element in a sequence.
+* _Multiset operations_ `intersect`, `diff`, `union`, and `distinct` , which perform set-like operations on the elements of two sequences or remove duplicates.
+
+### `Buffer`
+
+An important sub-category of mutable sequences is buffers. Buffers allow not only updates of existing elements but also element insertions, element removals, and efficient additions of new elements at the end of the buffer. Two `Buffer` implementations that are commonly used are `ListBuffer` and `ArrayBuffer`.
+
+
+## `Set`
+
+`Set`s are `Iterable`s that contain no duplicate elements (just like mathematical sets). The operations on sets are summarized below:
+
+* _Tests_ `contains`, `apply`, and `subsetOf`. The `contains` method indicates whether a set contains a given element.
+* _Additions_ `+` and `++`, which add one or more elements to a set, yielding a new set as a result.
+* _Removals_ `-` and `--`, which remove one or more elements from a set, yielding a new set.
+* _Set operations_ for union, intersection, and set difference. These set operations exist in two forms: alphabetic and symbolic. The alphabetic versions are `intersect`, `union`, and `diff`, whereas the symbolic versions are `&`, `|`, and `&~`.
+
+
+## `Map`
+
+`Map`s are `Iterable`s of pairs of keys and values (also named _mappings_ or _associations_). The fundamental operations on maps, summarized below, are similar to those on sets.
+
+* _Lookups_ `apply`, `get`, `getOrElse`, `contains`, and `isDefinedAt`. These operations turn maps into partial functions from keys to values.
+* _Additions and updates_ `+`, `++`, and `updated`, which let you add new bindings to a map or change existing bindings.
+* _Removals_ `-` and `--`, which remove bindings from a map.
+* _Subcollection producers_ `keys`, `keySet`, `keysIterator`, `valuesIterator`, and `values`, which return a map's keys and values separately in various forms.
+* _Transformations_ `filterKeys` and `mapValues`, which produce a new map by filtering and transforming bindings of an existing map.
+
+
+## Concrete immutable collection classes
+
+Scala provides many concrete immutable collection classes for you to choose from. They differ in the traits they implement (maps, sets, sequences), whether they can be infinite, and the speed of various operations.
+
+### Lists
+
+Lists are finite immutable sequences. They provide constant-time access to their first element as well as the rest of the list, and they have a constant-time cons operation for adding a new element to the front of the list. Many other operations take linear time.
+
+### Streams
+
+A stream is like a list except that its elements are computed lazily. Because of this, a stream can be infinitely long. Only those elements requested will be computed. Otherwise, streams have the same performance characteristics as lists.
+
+### Vectors
+
+Vectors are a collection type that give efficient access to elements beyond the head. Access to any elements of a vector take only "effectively constant time". Algorithms using vectors do not have to be careful about accessing just the head of the sequence.
+
+### Immutable stacks
+
+If you need a last-in-first-out sequence, you can use a `Stack`. You push an element onto a stack with `push`, pop an element with `pop`, and peek at the top of the stack without removing it with `top`. All of these operations are constant time.
+
+### Immutable queues
+
+A queue is just like a stack except that it is first-in-first-out rather than last-in-first-out. It is represented in Scala by the `Queue` collection.
+
+### Ranges
+
+A range is an ordered sequence of integers that are equally spaced apart. For example, "1, 2, 3" is a range, as is "5, 8, 11, 14". To create a range in Scala, use the predefined methods `to` and `by`.
+
+```scala
+1 to 3       // Range(1, 2, 3)
+5 to 14 by 3 // Range(5, 8, 11, 14)
+1 until 3    // Range(1, 2)
+```
+
+### Hash tries
+
+Hash tries are a standard way to implement immutable sets and maps efficiently.
+Their representation is similar to vectors in that they are also trees where every node has 32 elements or 32 subtrees, but selection is done based on a hash code.
+
+Hash tries strike a nice balance between reasonably fast lookups and reasonably efficient functional insertions (`+`) and deletions (`-`). That's why they underlie Scala's default implementations of immutable maps and sets.
+
+### Red-black trees
+
+Red-black trees are a form of balanced binary trees where some nodes are designated "red" and others "black". Like any balanced binary tree, operations on them reliably complete in time logarithmic to the size of the tree. Scala provides implementations of sets and maps that use a red-black tree internally - you can access them under the names `TreeSet` and `TreeMap`.
+
+### Immutable bit sets
+
+A bit set represents a collection of small integers as the bits of a larger integer.
+
+### List maps
+
+A list map represents a map as a linked list of key-value pairs.
+
+
+## Concrete mutable collection classes
+
+### Array buffers
+
+An array buffer holds an array and a size. Most operations on an array buffer have the same speed as an array, because the operations simply access and modify the underlying array. Additionally, array buffers can have data efficiently added to the end. Appending an item to an array buffer takes amortized constant time. Thus, array buffers are useful for efficiently building up a large collection whenever the new items are always added to the end.
+
+### List buffers
+
+A list buffer is like an array buffer except that it uses a linked list internally instead of an array. If you plan to convert the buffer to a list once it is built up, use a list buffer instead of an array buffer.
+
+### String builders
+
+A string builder is useful for building strings. String builders are so commonly used that they are already imported into the default namespace. Create them with a simple new `StringBuilder`:
+
+```scala
+val buf = new StringBuilder
+buf += 'a'      // a
+buf ++= "bcdef" // abcedf
+buf.toString    // String = abcdef
+```
+
+### Linked lists
+
+Linked lists are mutable sequences that consist of nodes that are linked with next pointers.
+
+### Double linked lists
+
+`DoubleLinkedList`s are like the single linked lists described in the previous subsection. The main benefit of that additional link is that it makes element removal very fast.
+
+### Mutable lists
+
+A `MutableList` consists of a single linked list together with a pointer that refers to the terminal empty node of that list.
+
+### Queues
+
+Scala provides mutable queues in addition to immutable ones. You use a mutable queue similarly to the way you use an immutable one, but instead of `enqueue`, you use the `+=` and `++=` operators to append.
+
+### Array sequences
+
+Array sequences are mutable sequences of fixed size that store their elements internally in an `Array[AnyRef]`. They are implemented in Scala by class `ArraySeq`.
+
+### Stacks
+
+You saw immutable stacks earlier. There is also a mutable version. It works exactly the same as the immutable version except that modifications happen in place.
+
+### Array stacks
+
+`ArrayStack` is an alternative implementation of a mutable stack, which is backed by an `Array` that gets resized as needed. It provides fast indexing and is generally slightly more efficient for most operations than a normal mutable stack.
+
+### Hash tables
+
+A hash table stores its elements in an underlying array, placing each item at a position in the array determined by the hash code of that item. Adding an element to a hash table takes only constant time, so long as there isn't already another element in the array that has the same hash code. Hash tables are thus very fast so long as the objects placed in them have a good distribution of hash codes. As a result, the default mutable map and set types in Scala are based on hash tables.
+
+### Concurrent Maps
+
+A concurrent map can be accessed by several threads at once.
+
+
+## Arrays
+
+Arrays are a special kind of collection in Scala. One the one hand, Scala arrays correspond one-to-one to Java arrays. That is, a Scala array `Array[Int]` is represented as a Java `int[]`, an `Array[Double]` is represented as a Java `double[]` and an `Array[String]` is represented as a Java `String[]`. But at the same time, Scala arrays offer much more their Java analogues. First, Scala arrays can be generic. That is, you can have an `Array[T]`, where `T` is a type parameter or abstract type. Second, Scala arrays are compatible with Scala sequences - you can pass an `Array[T]` where a `Seq[T]` is required.
+
+
+## Strings
+
+Like arrays, strings are not directly sequences, but they can be converted to them, and they also support all sequence operations.
+
+
+## Performance characteristics
+
+Different collection types have different performance characteristics. That's often the primary reason for picking one collection type over another.
+
+
+## Equality
+
+The collection libraries have a uniform approach to equality and hashing. The idea is, first, to divide collections into sets, maps, and sequences. Collections in different categories are always unequal; on the other hand, within the same category, collections are equal if and only if they have the same elements. It does not matter for the equality check whether a collection is mutable or immutable.
+
+
+## Views
+
+There is a systematic way to turn every collection into a lazy one and vice-versa which is based on collection views. A _view_ is a special kind of collection that represents some base collection, but implements all of its transformers lazily.
+
+To go from a collection to its view, you can use the `view` method on the collection. If `xs` is some collection, then `xs.view` is the same collection, but with all transformers implemented lazily. To get back from a view to a strict collection, you can use the `force` method.
+
+There are two reasons why you might want to consider using views. The first is performance - by switching a collection to a view the construction of intermediate results can be avoided. The second use case applies to views over mutable sequences. Many transformer functions on such views provide a window into the original sequence that can then be used to update selectively some elements of that sequence.
+
+
+## Iterators
+
+An iterator is not a collection, but rather a way to access the elements of a collection one by one. The two basic operations on an iterator it are `next` and `hasNext`. The most straightforward way to "step through" all the elements returned by an iterator is to use a while loop:
+
+```scala
+while (it.hasNext)
+  println(it.next())
+```
+
+Iterators in Scala also provide analogues of most of the methods that you find
+in the `Traversable`, `Iterable`, and `Seq` traits. Also, for expressions can be used.
+
+```scala
+it foreach println
+
+for (elem <- it) println(elem)
+```
+
+### Buffered iterators
+
+Sometimes you want an iterator that can "look ahead" so that you can inspect the next element to be returned without advancing past that element. 
+
+The solution to this problem is to use a buffered iterator, an instance of trait `BufferedIterator`. `BufferedIterator` is a subtrait of `Iterator`, which provides one extra method, `head`. Calling `head` on a buffered iterator will return its first element, but will not advance the iterator.
+
+```scala
+def skipEmptyWords(it: BufferedIterator[String]) =
+  while (it.head.isEmpty) { it.next() }
+```
+
+Every iterator can be converted to a buffered iterator by calling its `buffered` method.
+
