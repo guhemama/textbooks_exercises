@@ -1012,7 +1012,7 @@ A private constructor can be accessed only from within the class itself and its 
 
 ## Variance
 
-The Scala compiler will check any variance annotations you place on type parameters. For example, if you try to declare a type parameter to be covariant (by adding a `+`, e.g. `Queue[+T]`), but that could lead to potential runtime errors, your program won’t compile.
+The Scala compiler will check any variance annotations you place on type parameters. For example, if you try to declare a type parameter to be covariant (by adding a `+`, e.g. `Queue[+T]`), but that could lead to potential runtime errors, your program won't compile.
 
 ## Covariance
 
@@ -1042,12 +1042,12 @@ One reason to use a type member is to define a short, descriptive alias for a ty
 
 ## Abstract `val`s
 
-Abstract `val`s sometimes play a role analogous to superclass parameters: they let you provide details in a subclass that are missing in a superclass. This is particularly important for traits, because traits don’t have a constructor to which you could pass parameters. So the usual notion of parameterizing a trait works via abstract `val`s that are implemented in subclasses.
+Abstract `val`s sometimes play a role analogous to superclass parameters: they let you provide details in a subclass that are missing in a superclass. This is particularly important for traits, because traits don't have a constructor to which you could pass parameters. So the usual notion of parameterizing a trait works via abstract `val`s that are implemented in subclasses.
 
 ## Refinement types
 
 When a class inherits from another, the first class is said to be a _nominal_
-subtype of the other one. It’s a _nominal_ subtype because each type has a _name_, and the names are explicitly declared to have a subtyping relationship. Scala additionally supports _structural_ subtyping, where you get a subtyping relationship simply because two types have compatible members. To get structural subtyping in Scala, use Scala’s _refinement types_.
+subtype of the other one. It's a _nominal_ subtype because each type has a _name_, and the names are explicitly declared to have a subtyping relationship. Scala additionally supports _structural_ subtyping, where you get a subtyping relationship simply because two types have compatible members. To get structural subtyping in Scala, use Scala's _refinement types_.
 
 In the definition below, the members in the curly braces further specify - or refine, if you will - the types of members from the base class.
 
@@ -1211,7 +1211,7 @@ method; all other methods can be inherited from `Traversable`. The `foreach` met
 
 ## Trait `Iterable`
 
-All methods in this trait are defined in terms of an abstract method, `iterator`, which yields the collection’s elements one by one. The abstract `foreach` method inherited from trait `Traversable` is implemented in `Iterable` in terms of `iterator`.
+All methods in this trait are defined in terms of an abstract method, `iterator`, which yields the collection's elements one by one. The abstract `foreach` method inherited from trait `Traversable` is implemented in `Iterable` in terms of `iterator`.
 
 ```scala
 def foreach[U](f: Elem => U): Unit = {
@@ -1428,7 +1428,7 @@ for (elem <- it) println(elem)
 
 ### Buffered iterators
 
-Sometimes you want an iterator that can "look ahead" so that you can inspect the next element to be returned without advancing past that element. 
+Sometimes you want an iterator that can "look ahead" so that you can inspect the next element to be returned without advancing past that element.
 
 The solution to this problem is to use a buffered iterator, an instance of trait `BufferedIterator`. `BufferedIterator` is a subtrait of `Iterator`, which provides one extra method, `head`. Calling `head` on a buffered iterator will return its first element, but will not advance the iterator.
 
@@ -1439,3 +1439,80 @@ def skipEmptyWords(it: BufferedIterator[String]) =
 
 Every iterator can be converted to a buffered iterator by calling its `buffered` method.
 
+
+
+# Chapter 26 - Extractors
+
+An extractor in Scala is an object that has a method called `unapply` as one of its members. The purpose of that `unapply` method is to match a value and take it apart. Often, the extractor object also defines a dual method `apply` for building values, but this is not required.
+
+```scala
+object Email {
+  // The injection method (optional)
+  def apply(user: String, domain: String) = user + "@" + domain
+
+  // The extraction method (mandatory)
+  def unapply(str: String): Option[(String, String)] = {
+    val parts = str split "@"
+    if (parts.length == 2) Some(parts(0), parts(1)) else None
+  }
+}
+```
+
+The `unapply` method is what turns `Email` into an extractor. In a sense, it reverses the construction process of `apply`.
+
+Example usage:
+
+```scala
+str match {
+  case Email(user, domain) => println(user + " AT " + domain)
+  case _ => println("not an email address")
+}
+```
+
+The `unapply` method of the previous example returned a pair of element values in the success case. This is easily generalized to patterns of more than two variables. To bind N variables, an unapply would return an n-element tuple, wrapped in a `Some`.
+
+It's also possible that an extractor pattern does not bind any variables. In that case the corresponding unapply method returns a boolean - `true` for success and `false` for failure.
+
+```scala
+object UpperCase {
+  def unapply(s: String): Boolean = s.toUpperCase == s
+}
+```
+
+Extractors break the link between data representations and patterns. This property is called _representation independence_. In open systems of large size, representation independence is very important because it allows you to change an implementation type used in a set of components without affecting clients of these components.
+
+## Regular expressions
+
+Scala inherits its regular expression syntax from Java, which in turn inherits most of the features of Perl.
+
+Scala's regular expression class resides in package `scala.util.matching`.
+
+```scala
+import scala.util.matching.Regex
+
+// Using a regular string, we have to escape backslashes
+val Decimal = new Regex("(-)?(\\d+)(\\.\\d*)?")
+
+// Using a raw string, we don't need to escape backslashes
+val Decimal = new Regex("""(-)?(\d+)(\.\d*)?""")
+
+// Alternative syntax to build a regexp
+val Decimal = """(-)?(\d+)(\.\d*)?""".r
+```
+
+You can search for occurrences of a regular expression in a string using several different operators:
+
+`regex findFirstIn str`: Finds first occurrence of regular expression `regex` in string `str`, returning the result in an `Option` type.
+
+`regex findAllIn str`: Finds all occurrences of regular expression `regex` in string `str`, returning the results in an `Iterator`.
+
+`regex findPrefixOf str`: Finds an occurrence of regular expression `regex` at the start of string `str`, returning the result in an `Option` type.
+
+Every regular expression in Scala defines an extractor. The extractor is used to identify substrings that are matched by the groups of the regular expression. For instance, you could decompose a decimal number string as follows:
+
+```scala
+val Decimal(sign, integerpart, decimalpart) = "-1.23"
+// sign: String = -
+// integerpart: String = 1
+// decimalpart: String = .23
+```
