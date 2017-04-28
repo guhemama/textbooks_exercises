@@ -1516,3 +1516,66 @@ val Decimal(sign, integerpart, decimalpart) = "-1.23"
 // integerpart: String = 1
 // decimalpart: String = .23
 ```
+
+
+
+# Chapter 27 - Annotations
+
+Annotations are _structured information_ added to program source code. Like comments, they can be sprinkled throughout a program and attached to any variable, method, expression, or other program element. Unlike comments, they have structure, thus making them easier to machine process.
+
+A typical use of an annotation looks like this:
+
+```scala
+@deprecated def bigMistake() = //...
+```
+
+The annotation is the `@deprecated` part, and it applies to the entirety of the `bigMistake` method. In this case, the method is being marked as something the author of wishes you not to use.
+
+Annotations are allowed on any kind of declaration or definition, including `val`s, `var`s, `def`s, `class`es, `object`s, `trait`s, and `type`s.
+
+Annotations can also be applied to an expression, as with the `@unchecked` annotation for pattern matching. To do so, place a colon `:` after the expression and then write the annotation.
+
+```scala
+(e: @unchecked) match {
+  // non-exhaustive cases...
+}
+```
+
+Annotations have a richer general form:
+
+_@annot_(_expr1_, _expr2_, ...)
+
+The _annot_ specifies the class of annotation. All annotations must include that much. The _exp_ parts are arguments to the annotation. For annotations that do not need any arguments, you may leave off the parentheses. For annotations that do have arguments, place the arguments in parentheses, for example, `@serial(1234)`.
+
+
+## Standard annotations
+
+### Deprecation
+
+Deprecation lets you gracefully remove a method or class that turns out to be a mistake. You mark the method or class as deprecated, and then anyone who calls that method or class will get a deprecation warning.
+
+```scala
+@deprecated("use newShinyMethod() instead")
+def bigMistake() = //...
+```
+
+### Volatile fields
+
+Sometimes programmers want to use mutable state in their concurrent programs. The `@volatile` annotation helps in such cases. It informs the compiler that the variable in question will be used by multiple threads. Such variables are implemented so that reads and writes to the variable are slower, but accesses from multiple threads behave more predictably.
+
+### Binary serialization
+
+The `@serializible` annotation indicates whether a class is serializable at all. Most classes are serializable, but not all.
+
+The `@SerialVersionUID(1234)` annotation helps deal with serializable classes changing as time goes by. You can attach a serial number to the current version of a class by adding this annotation.
+
+The `@transient` annotation should be used for fields that should not be serialized at all, even when the surrounding object is serializable.
+
+### Tailrec
+
+You would typically add the `@tailrec` annotation to a method that needs to be tail recursive, for instance because you expect that it would recurse very deeply otherwise. To make sure that the Scala compiler does perform the tail-recursion optimization on this method, you can add `@tailrec` in front of the method definition. If the optimization cannot be performed, you will then get a warning together with an explanation of the reasons.
+
+### Unchecked
+
+The `@unchecked` annotation is interpreted by the compiler during pattern matches. It tells the compiler not to worry if the match expression seems to leave out some cases.
+
