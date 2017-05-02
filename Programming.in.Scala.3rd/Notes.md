@@ -934,7 +934,7 @@ to a supplied function.
 * `List.concat` concatenates a number of element lists.
 
 
-# Chatper 17 - Working with other collections
+# Chapter 17 - Working with other collections
 
 ## Sequences
 
@@ -1578,4 +1578,113 @@ You would typically add the `@tailrec` annotation to a method that needs to be t
 ### Unchecked
 
 The `@unchecked` annotation is interpreted by the compiler during pattern matches. It tells the compiler not to worry if the match expression seems to leave out some cases.
+
+
+
+# Chapter 28 - Working with XML
+
+XML is a form of _semi-structured data_. It is more structured than plain strings, because it organizes the contents of the data into a tree. Plain XML is less structured than the objects of a programming language, though, as it admits free-form text between tags and it lacks a type system.
+
+Semi-structured data is very helpful any time you need to serialize program data for saving in a file or shipping across a network.
+
+XML is built out of two basic elements, text and tags. Text is, as usual, any sequence of characters. Tags, written like `<pod>`, consist of a less-than sign, an alphanumeric label, and a greater than sign. Tags can be start or end tags. An end tag looks just like a start tag except that it has a slash just before the tag's label, like this: `</pod>`. Start and end tags must match each other, just like parentheses. Any start tag must eventually be followed by an end tag with the same label.
+
+Start tags can have attributes attached to them. An attribute is a name-value pair written with an equals sign in the middle. The attribute name itself is plain, unstructured text, and the value is surrounded by either double quotes `""` or single quotes `''`.
+
+## XML literals
+
+Scala lets you type in XML as a literal anywhere that an expression is valid. Simply type a start tag and then continue writing XML content. The compiler will go into an XML-input mode and will read content as XML until it sees the end tag matching the start tag you began with.
+
+You can evaluate Scala code in the middle of an XML literal by using curly braces `{}` as an escape.
+
+```scala
+scala> <a> {"hello" + ", world"} </a>
+res1: scala.xml.Elem = <a> hello, world </a>
+```
+
+## Serialization
+
+To convert instances of a class to XML, simply add a `toXML` method that uses XML literals and brace escapes.
+
+## Taking XML apart
+
+Among the many methods available for the XML classes, there are three in particular that you should be aware of. They allow you to take apart XML without thinking too much about the precise way XML is represented in Scala. These methods are based on the XPath language for processing XML.
+
+**Extracting text**. By calling the text method on any XML node you retrieve all of the text within that node, minus any element tags:
+
+```scala
+<a>Sounds <tag/> good</a>.text
+// String = Sounds good
+
+<a> input ---&gt; output </a>.text
+// String = " input ---> output "
+```
+
+**Extracting sub-elements**. If you want to find a sub-element by tag name, simply call `\` with the name of the tag:
+
+```scala
+<a><b><c>hello</c></b></a> \ "b"
+// scala.xml.NodeSeq = NodeSeq(<b><c>hello</c></b>)
+```
+
+You can do a “deep search” and look through sub-sub-elements, etc., by using `\\` instead of the `\` operator:
+
+```scala
+<a><b><c>hello</c></b></a> \\ "c"
+// scala.xml.NodeSeq = NodeSeq(<c>hello</c>)
+```
+
+**Extracting attributes**. You can extract tag attributes using the same `\` and `\\` methods. Simply put an at sign `@` before the attribute name:
+
+```scala
+val joe = <employee
+  name="Joe"
+  rank="code monkey"
+  serial="123"/>
+
+joe \ "@name"
+// scala.xml.NodeSeq = Joe
+```
+
+## Loading and saving
+
+To convert from XML to a file of bytes, you can use the `XML.save` command. You must specify a file name and a node to be saved:
+
+```scala
+scala.xml.XML.save("therm1.xml", node)
+```
+
+Loading is simpler than saving, because the file includes everything the loader needs to know. Simply call `XML.loadFile` on a file name:
+
+```scala
+val loadnode = xml.XML.loadFile("therm1.xml")
+```
+
+## Pattern matching on XML
+
+An XML pattern looks just like an XML literal. The main difference is that if you insert a `{}` escape, then the code inside the `{}` is not an expression but a pattern.
+
+```scala
+def proc(node: scala.xml.Node): String =
+  node match {
+    case <a>{contents}</a> => "It's an a: " + contents
+    case <b>{contents}</b> => "It's a b: " + contents
+    case _ => "It's something else."
+  }
+```
+
+The pattern for "any sequence" of XML nodes is written `_*`.
+
+```scala
+def proc(node: scala.xml.Node): String =
+  node match {
+    case <a>{contents @ _*}</a> => "It's an a: " + contents
+    case <b>{contents @ _*}</b> => "It's a b: " + contents
+    case _ => "It's something else."
+  }
+```
+
+
+
+# Chapter 29 - Modular programming using objects
 
