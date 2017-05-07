@@ -1688,3 +1688,25 @@ def proc(node: scala.xml.Node): String =
 
 # Chapter 29 - Modular programming using objects
 
+Often a module is too large to fit comfortably into a single file. When that happens, you can use traits to split a module into separate files.
+
+```scala
+trait FoodCategories {
+  case class FoodCategory(name: String, foods: List[Food])
+  def allCategories: List[FoodCategory]
+}
+
+abstract class Database extends FoodCategories {
+  def allFoods: List[Food]
+  def allRecipes: List[Recipe]
+  def foodNamed(name: String) =
+    allFoods.find(f => f.name == name)
+}
+```
+
+
+
+# Chapter 30 - Object equality
+
+
+
