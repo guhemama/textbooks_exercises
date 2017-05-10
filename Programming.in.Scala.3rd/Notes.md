@@ -1708,5 +1708,54 @@ abstract class Database extends FoodCategories {
 
 # Chapter 30 - Object equality
 
+The `==` equality is reserved in Scala for the "natural" equality of each type. For value types, `==` is value comparison, just like in Java. For reference types, `==` is the same as `equals` in Scala. You can redefine the behavior of `==` for new types by overriding the `equals` method, which is always inherited from class `Any`.
 
+## Writing an equality method
 
+Here are four common pitfalls 2 that can cause inconsistent behavior when overriding `equals`:
+
+1. Defining `equals` with the wrong signature.
+2. Changing `equals` without also changing `hashCode`: it may only depend on fields that `equals` depends on.
+3. Defining `equals` in terms of mutable fields.
+4. Failing to define `equals` as an equivalence relation.
+
+The contract of the `equals` method in `scala.Any` specifies that equals must implement an equivalence relation on non-null objects:
+
+* _It is reflexive: For any non-null value `x`, the expression `x.equals(x)` should return `true`._
+* _It is symmetric: For any non-null values `x` and `y`, `x.equals(y)` should return `true` if and only if `y.equals(x)` returns `true`._
+* _It is transitive: For any non-null values `x`, `y`, and `z`, `if x.equals(y)` returns `true` and `y.equals(z)` returns `true`, then `x.equals(z)` should return `true`._
+* _It is consistent: For any non-null values `x` and `y`, multiple invocations of `x.equals(y)` should consistently return `true` or consistently return `false`, provided no information used in `equals` comparisons on the objects is modified._
+* _For any non-null value `x`, `x.equals(null)` should return `false`._
+
+## Recipes for `equals` and `hashCode`
+
+```scala
+class Rational(n: Int, d: Int) {
+  require(d != 0)
+
+  private val g = gcd(n.abs, d.abs)
+  val numer = (if (d < 0) -n else n) / g
+  val denom = d.abs / g
+
+  private def gcd(a: Int, b: Int): Int =
+    if (b == 0) a else gcd(b, a % b)
+
+  override def equals(other: Any): Boolean = other match {
+    case that: Rational =>
+      (that canEqual this) &&
+      numer == that.numer &&
+      denom == that.denom
+    case _ => false
+  }
+
+  def canEqual(other: Any): Boolean =
+    other.isInstanceOf[Rational]
+
+  override def hashCode: Int = (numer, denom).##
+
+  override def toString =
+    if (denom == 1) numer.toString else numer + "/" + denom
+}
+```
+
+One thing to keep in mind as you write `hashCode` methods using this approach is that your hash code will only be as good as the hash codes you build out of it, namely the hash codes you obtain by calling `hashCode` on the relevant fields of your object.
