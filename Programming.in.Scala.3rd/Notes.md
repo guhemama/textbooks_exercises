@@ -1627,7 +1627,7 @@ Among the many methods available for the XML classes, there are three in particu
 // scala.xml.NodeSeq = NodeSeq(<b><c>hello</c></b>)
 ```
 
-You can do a “deep search” and look through sub-sub-elements, etc., by using `\\` instead of the `\` operator:
+You can do a "deep search" and look through sub-sub-elements, etc., by using `\\` instead of the `\` operator:
 
 ```scala
 <a><b><c>hello</c></b></a> \\ "c"
@@ -1759,3 +1759,129 @@ class Rational(n: Int, d: Int) {
 ```
 
 One thing to keep in mind as you write `hashCode` methods using this approach is that your hash code will only be as good as the hash codes you build out of it, namely the hash codes you obtain by calling `hashCode` on the relevant fields of your object.
+
+
+
+# Chapter 32 - Futures and concurrency
+
+Scala's standard library focus on asynchronous transformations of immutable state: the `Future`.
+
+## Asynchronous execution and `Try`s
+
+Many operations on `Future` require an implicit execution context that provides a strategy for executing functions asynchronously.
+
+The code below uses the global context:
+
+```scala
+import scala.concurrent.Future
+import scala.concurrent.ExecutionContext.Implicits.global
+
+val fut = Future { Thread.sleep(10000); 21 + 21 }
+```
+
+Two methods on `Future` allow you to poll: `isCompleted` and `value`. When invoked on a future that has not yet completed, `isCompleted` will return `false` and `value` will return `None`.
+
+The option returned by `value` contains a `Try`. A `Try` is either a `Success`, which contains a value of type `T`, or a `Failure`, which contains an exception (an instance of `java.lang.Throwable`). The purpose of `Try` is to provide for asynchronous computations what the `try` expression provides for synchronous computations: it allows you to deal with the possibility that the computation will complete abruptly with an exception rather than return a result.
+
+## Working with `Future`s
+
+Scala's `Future` allows you to specify transformations on `Future` results and obtain a _new future_ that represents the composition of the two asynchronous computations: the original and the transformation.
+
+The most fundamental such operation is `map`. Instead of blocking then continuing with another computation, you can just `map` the next computation onto the future. The result will be a new future that represents the original asynchronously computed result transformed asynchronously by the function passed to `map`.
+
+Because Scala's future also declares a `flatMap` method, you can transform futures using a `for` expression.
+
+```scala
+val fut1 = Future { Thread.sleep(10000); 21 + 21 }
+val fut2 = Future { Thread.sleep(10000); 23 + 23 }
+
+for {
+  x <- fut1
+  y <- fut2
+} yield x + y
+// Option[scala.util.Try[Int]] = Some(Success(88))
+```
+
+Besides the `apply` method, used in earlier examples to create futures, the `Future` companion object also includes three factory methods for creating already-completed futures:
+
+* `successful`: creates a future that has already succeeded.
+* `failed`: creates a future that has already failed.
+* `fromTry`: creates an already completed future from a `Try`.
+
+These factory methods do not require an `ExecutionContext`.
+
+The most general way to create a future is to use a `Promise`. Given a promise you can obtain a future that is controlled by the promise. The future will complete when you complete the promise.
+
+You can complete the promise with methods named `success`, `failure`, and `complete`. These methods on `Promise` are similar to those described previously for constructing already completed futures.
+
+```scala
+val pro = Promise[Int]
+pro.success(42)
+fut.value
+// Option[scala.util.Try[Int]] = Some(Success(42))
+```
+
+Scala's future offers two methods, `filter` and `collect`, that allow you to ensure a property holds true about a future value. The `filter` method validates the future result, leaving it the same if it is valid; if the future value is not valid, the future returned by filter will fail with a `NoSuchElementException`:
+
+```scala
+val fut = Future { 42 }
+val valid = fut.filter(res => res > 0)
+valid.value
+// Option[scala.util.Try[Int]] = Some(Success(42))
+```
+
+Because `Future` also offers a `withFilter` method, you can perform the same operation with for expression filters.
+
+`Future`'s `collect` method allows you to validate the future value and transform it in one operation. If the partial function passed to collect is defined at the future result, the future returned by `collect` will succeed with that value transformed by the function; otherwise, the future will fail with `NoSuchElementException`.
+
+```scala
+val valid = fut collect { case res if res > 0 => res + 46 }
+valid.value
+// Option[scala.util.Try[Int]] = Some(Success(88))
+```
+
+Scala's future provides ways to work with futures that fail, including `failed`, `fallBackTo`, `recover`, and `recoverWith`. The failed method will transform a failed future of any type into a successful `Future[Throwable]` that holds onto the exception that caused the failure.
+
+`Future`'s `transform` method accepts two functions with which to transform a future - one to use in case of success and the other in case of failure:
+
+```scala
+val first = success.transform(
+  res => res * -1,
+  ex => new Exception("see cause", ex)
+)
+```
+
+`Future` and its companion object offer methods that allow you to combine multiple futures.
+
+* `zip` will transform two successful futures into a future tuple of both values.
+* `fold` allows you to accumulate a result across a `TraversableOnce` collection of futures, yielding a future result.
+* `Future.reduce` performs a fold without a zero, using the initial future result as the start value.
+* `Future.sequence` method transforms a `TraversableOnce` collection of futures into a future `TraversableOnce` of values.
+* `Future.traverse` will change a `TraversableOnce` of any element type into a `TraversableOnce` of futures and "sequence" that into a future `TraversableOnce` of values.
+
+Sometimes you may need to perform a side effect after a future completes. `Future` provides several methods for this purpose.
+
+* `foreach` will perform a side effect if a future completes successfully.
+* `onComplete` method will be executed whether the future ultimately succeeds or fails. The function will be passed a `Try` - a `Success` holding the result if the future succeeded, else a `Failure` holding the exception that caused the future to fail.
+* `andThen` returns a new future that mirrors (succeeds or fails in the same way as) the original future on which you invoke `andThen`, but it does not complete until the callback function has been fully executed.
+
+## Testing with `Future`s
+
+Scala does allow you to block on a future result when you need to - the `Await` object facilitates blocking to wait for future results.
+
+`Await.result` takes a `Future` and a `Duration`. The `Duration` indicates how long `Await.result` should wait for a `Future` to complete before timing out.
+
+```scala
+import scala.concurrent.Await
+import scala.concurrent.duration._
+
+val fut = Future { Thread.sleep(10000); 21 + 21 }
+val x = Await.result(fut, 15.seconds) // blocks
+```
+
+One place where blocking has been generally accepted is in tests of asynchronous codes.
+
+You can use blocking constructs provided by `ScalaTest`s trait `ScalaFutures`. For example, the `futureValue` method, implicitly added to `Future` by `ScalaFutures`, will block until the future completes.
+
+While blocking in tests is often fine, ScalaTest 3.0 adds "async" testing styles that allow you to test futures without blocking.
+
