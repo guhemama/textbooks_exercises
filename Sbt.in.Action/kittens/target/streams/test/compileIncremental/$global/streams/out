@@ -1,0 +1,40 @@
+[0m[[0mdebug[0m] [0m[naha] [0m
+[0m[[0mdebug[0m] [0m[naha] Initial source changes: [0m
+[0m[[0mdebug[0m] [0m[naha] 	removed:Set()[0m
+[0m[[0mdebug[0m] [0m[naha] 	added: Set(/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/test/scala/LogicSpec.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] 	modified: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated products: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] External API changes: API Changes: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] Modified binary dependencies: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] Initial directly invalidated sources: Set(/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/test/scala/LogicSpec.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] [0m
+[0m[[0mdebug[0m] [0m[naha] Sources indirectly invalidated by:[0m
+[0m[[0mdebug[0m] [0m[naha] 	product: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] 	binary dep: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] 	external source: Set()[0m
+[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set(/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/test/scala/LogicSpec.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/test/scala/LogicSpec.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Recompiling all 1 sources: invalidated sources (1) exceeded 50.0% of all sources[0m
+[0m[[0minfo[0m] [0mCompiling 1 Scala source to /home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/target/scala-2.10/test-classes...[0m
+[0m[[0mdebug[0m] [0mGetting org.scala-sbt:compiler-interface:0.13.15:component from component compiler for Scala 2.10.6[0m
+[0m[[0mdebug[0m] [0mGetting org.scala-sbt:compiler-interface:0.13.15:component from component compiler for Scala 2.10.6[0m
+[0m[[0mdebug[0m] [0mRunning cached compiler 6f91e0b1, interfacing (CompilerInterface) with Scala compiler version 2.10.6[0m
+[0m[[0mdebug[0m] [0mCalling Scala compiler with arguments  (CompilerInterface):[0m
+[0m[[0mdebug[0m] [0m	-bootclasspath[0m
+[0m[[0mdebug[0m] [0m	/usr/lib/jvm/java-8-oracle/jre/lib/resources.jar:/usr/lib/jvm/java-8-oracle/jre/lib/rt.jar:/usr/lib/jvm/java-8-oracle/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jsse.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jce.jar:/usr/lib/jvm/java-8-oracle/jre/lib/charsets.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jfr.jar:/usr/lib/jvm/java-8-oracle/jre/classes:/home/gustavo/.sbt/boot/scala-2.10.6/lib/scala-library.jar[0m
+[0m[[0mdebug[0m] [0m	-classpath[0m
+[0m[[0mdebug[0m] [0m	/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/target/scala-2.10/test-classes:/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/target/scala-2.10/classes:/home/gustavo/.ivy2/cache/org.specs2/specs2_2.10/jars/specs2_2.10-1.14.jar:/home/gustavo/.ivy2/cache/org.specs2/specs2-scalaz-core_2.10/jars/specs2-scalaz-core_2.10-7.0.0.jar:/home/gustavo/.ivy2/cache/org.specs2/specs2-scalaz-concurrent_2.10/jars/specs2-scalaz-concurrent_2.10-7.0.0.jar:/home/gustavo/.ivy2/cache/org.specs2/scalaz-effect_2.10/jars/scalaz-effect_2.10-7.0.0.jar:/home/gustavo/.ivy2/cache/org.specs2/scalaz-core_2.10/jars/scalaz-core_2.10-7.0.0.jar[0m
+[0m[[0mdebug[0m] [0mScala compilation took 2.867071804 s[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating /home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/test/scala/LogicSpec.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from /home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/test/scala/LogicSpec.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/test/scala/LogicSpec.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/test/scala/LogicSpec.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] The /home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/test/scala/LogicSpec.scala source file has the following implicit definitions changed:[0m
+[0m[[0mdebug[0m] [0m[naha] 	seqToResult, anyToJSonValueSpec, tupleToSeq2, implicitParam9, describeExpectation, asResult, toNotStringMatcher, fragmentsFragmentAndFormattingFragment, dataTableFragments, implicitParam4, doAfter, akaShould, toFileResultMatcher, thisBlock, matchFragments, resultExample, specificationStructureToFragments, functionToMatcher, implicitsAreAllowed, stringToHtmlLinkFragments, matchExample, akaMust, implicitParam1, fragmentsFragmentToFragments, toNotMatcherJson, adapterFunction, toExceptionMatcher, functionAndMessagesToMatcher, argumentsFragment, scopeAsResult, toNeutralMatcherNumeric, scalaArrayIsSized, anyBeHaveMatcher, toMapValueResultMatcher, stringToHtmlLinkFragments2, functionToMatcher2, tupleToSeq10, booleanFragmentsFragment, fragments, tupleToSeq5, toNeutralMatcherOrdered, resultFragments, fragmentAndFormattingFragment, implicitParam8, textAndFormattingFragment, matcherFunction2, pairFunctionToMatcher, toNeutralMatcherElem, toJsonRegex, booleanFragments, theValue, anyToArgProperty, toJsonValue, identifySpecificationStructure, combineBoolean, stringMatcher, fragmentFragments, implicitParam3, toXmlResultMatcher, toMapKeyResultMatcher, toStringResultMatcher, tripletFunctionToMatcher, described, matchResultAsResult, toDifferenceFilter, toLinesContentResultMatcher, toPathResultMatcher, toJsonPairSpec, text, describe, aBooleanExample, tupleToSeq6, doBefore, implicitParam7, longAsTime, upcastThen, implicitParam, debug, matcherFunction, matcherFunction3, functionAndKoMessageToMatcher, verifyFunction, textFragment, toNotMatcherElem, booleanExample, aMatchResultExample, specIdentificationMarkdownLink, intToRichLong, toAnyMatcherResult, implicitParam2, theBlock, matchFragmentsFragment, regexToJSonValueSpec, tupleToSeq4, fragmentsFragments, textStart, tupleToSeq7, implicitParam10, lazyfy, toOrderedResultMatcher, RegexFragmentToFragments, combineMatchResult, implicitParam6, ***If you see this message this means that you've forgotten an operator after the description string: you should write "example" >> result ***, toEitherResultMatcher, scalaTraversableIsSized, toAnyRefMatcherResult, ToDelta, toPendingUntilFixed, toMapResultMatcher, downcastGiven, seqContentForMatchers, postfixOpsAreAllowed, fileContentForMatchers, include, gwtToFragment, matchResultFunctionToMatcher, fragmentsAndFormattingFragment, stringMatcherToJSonValueSpec, orderedSeqMatchResult, anyWithEmpty, traversable, toNeutralStringMatcher, forExample, outsideFunctionToResult, tupleToSeq3, updowncastWhen, title, toBeLikeResultMatcher, thisValue, aResultExample, combineResult, toNumericResultMatcher, aDataTableExample, toResult, inScope, fromMatchResult, canBeEqual, sized, tupleToSeq9, contextAsResult, tupleToSeq8, dataTableExample, doAround, toPartialFunctionResultMatcher, javaCollectionIsSized, toJsonStringMatcher, inExample, toOptionResultMatcher, stringIsSized, implicitParam5, toClassMatcherResult, exampleFactory, matchResultSeqAsResult.[0m
+[0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
+[0m[[0mdebug[0m] [0m[naha] New invalidations:[0m
+[0m[[0mdebug[0m] [0m[naha] 	Set()[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] Previously invalidated, but (transitively) depend on new invalidations:[0m
+[0m[[0mdebug[0m] [0m[naha] 	Set()[0m
+[0m[[0mdebug[0m] [0m[naha] All newly invalidated sources after taking into account (previously) recompiled sources:Set()[0m

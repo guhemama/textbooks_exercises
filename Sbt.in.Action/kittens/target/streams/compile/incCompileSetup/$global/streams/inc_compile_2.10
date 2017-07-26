@@ -1,0 +1,218 @@
+format version: 5
+output mode:
+1 items
+0 -> single
+output directories:
+1 items
+output dir -> /home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/target/scala-2.10/classes
+compile options:
+0 items
+javac options:
+0 items
+compiler version:
+1 items
+0 -> 2.10.6
+compile order:
+1 items
+0 -> Mixed
+name hashing:
+1 items
+0 -> true
+products:
+11 items
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> /home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/target/scala-2.10/classes/Logic$$anonfun$1.class
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> /home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/target/scala-2.10/classes/Logic$$anonfun$2.class
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> /home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/target/scala-2.10/classes/Logic$.class
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> /home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/target/scala-2.10/classes/Logic.class
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> /home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/target/scala-2.10/classes/BuyerPreferences$.class
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> /home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/target/scala-2.10/classes/BuyerPreferences.class
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> /home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/target/scala-2.10/classes/Kitten$.class
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> /home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/target/scala-2.10/classes/Kitten.class
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/PreownedKittens.scala -> /home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/target/scala-2.10/classes/PreownedKittens$.class
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/PreownedKittens.scala -> /home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/target/scala-2.10/classes/PreownedKittens$delayedInit$body.class
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/PreownedKittens.scala -> /home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/target/scala-2.10/classes/PreownedKittens.class
+binary dependencies:
+6 items
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> /home/gustavo/.sbt/boot/scala-2.10.6/lib/scala-library.jar
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> /usr/lib/jvm/java-8-oracle/jre/lib/rt.jar
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> /home/gustavo/.sbt/boot/scala-2.10.6/lib/scala-library.jar
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> /usr/lib/jvm/java-8-oracle/jre/lib/rt.jar
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/PreownedKittens.scala -> /home/gustavo/.sbt/boot/scala-2.10.6/lib/scala-library.jar
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/PreownedKittens.scala -> /usr/lib/jvm/java-8-oracle/jre/lib/rt.jar
+direct source dependencies:
+0 items
+direct external dependencies:
+0 items
+public inherited source dependencies:
+0 items
+public inherited external dependencies:
+0 items
+member reference internal dependencies:
+1 items
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> /home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala
+member reference external dependencies:
+0 items
+inheritance internal dependencies:
+0 items
+inheritance external dependencies:
+0 items
+class names:
+11 items
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> Logic
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> Logic$
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> Logic$$anonfun$1
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> Logic$$anonfun$2
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> BuyerPreferences
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> BuyerPreferences$
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> Kitten
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> Kitten$
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/PreownedKittens.scala -> PreownedKittens
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/PreownedKittens.scala -> PreownedKittens$
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/PreownedKittens.scala -> PreownedKittens$delayedInit$body
+used names:
+96 items
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> /
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> <init>
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> A
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> Any
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> AnyRef
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> B
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> Boolean
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> BuyerPreferences
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> CanBuildFrom
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> Coll
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> Double
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> DoubleIsFractional
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> Function1
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> Int
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> Kitten
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> Logic
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> Nothing
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> Numeric
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> Object
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> Predef
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> Seq
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> String
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> That
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> attr
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> attributes
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> b
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> buyer
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> canBuildFrom
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> collection
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> contains
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> kitten
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> length
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> map
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> matches
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> math
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> nums
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> package
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> scala
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> sum
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> &&
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> <init>
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> ==
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> A
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> AbstractFunction1
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> AbstractFunction2
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> Any
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> AnyRef
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> Boolean
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> BuyerPreferences
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> IndexOutOfBoundsException
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> Int
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> Iterator
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> Kitten
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> Long
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> None
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> Nothing
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> Object
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> Predef
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> Product
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> ScalaRunTime
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> Seq
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> Serializable
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> Some
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> Statics
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> String
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> T
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> T0
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> T1
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> T2
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> Tuple2
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> _hashCode
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> _toString
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> anyHash
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> asInstanceOf
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> attributes
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> eq
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> finalizeHash
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> id
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> isInstanceOf
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> longHash
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> mix
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> package
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> runtime
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> scala
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> toString
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> typedProductIterator
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> ||
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/PreownedKittens.scala -> <init>
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/PreownedKittens.scala -> Any
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/PreownedKittens.scala -> App
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/PreownedKittens.scala -> Object
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/PreownedKittens.scala -> Predef
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/PreownedKittens.scala -> PreownedKittens
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/PreownedKittens.scala -> Unit
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/PreownedKittens.scala -> println
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/PreownedKittens.scala -> scala
+product stamps:
+11 items
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/target/scala-2.10/classes/BuyerPreferences$.class -> lastModified(1501033154000)
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/target/scala-2.10/classes/BuyerPreferences.class -> lastModified(1501033154000)
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/target/scala-2.10/classes/Kitten$.class -> lastModified(1501033154000)
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/target/scala-2.10/classes/Kitten.class -> lastModified(1501033154000)
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/target/scala-2.10/classes/Logic$$anonfun$1.class -> lastModified(1501033549000)
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/target/scala-2.10/classes/Logic$$anonfun$2.class -> lastModified(1501033549000)
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/target/scala-2.10/classes/Logic$.class -> lastModified(1501033549000)
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/target/scala-2.10/classes/Logic.class -> lastModified(1501033549000)
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/target/scala-2.10/classes/PreownedKittens$.class -> lastModified(1501033066000)
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/target/scala-2.10/classes/PreownedKittens$delayedInit$body.class -> lastModified(1501033066000)
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/target/scala-2.10/classes/PreownedKittens.class -> lastModified(1501033066000)
+source stamps:
+3 items
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> hash(39c0a0c3fc5f15d68fe3b5cb01d89c422fe6c2c6)
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> hash(0666d5dda9804adf37d3d7e4c97489c902fe7e9a)
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/PreownedKittens.scala -> hash(de21f2a5659d3ae9968ae55e1218c90520c29788)
+binary stamps:
+2 items
+/home/gustavo/.sbt/boot/scala-2.10.6/lib/scala-library.jar -> lastModified(1442568926000)
+/usr/lib/jvm/java-8-oracle/jre/lib/rt.jar -> lastModified(1495297061000)
+class names:
+2 items
+/home/gustavo/.sbt/boot/scala-2.10.6/lib/scala-library.jar -> scala.collection.Seq
+/usr/lib/jvm/java-8-oracle/jre/lib/rt.jar -> java.lang.Object
+internal apis:
+3 items
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> 
+rO0ABXNyABB4c2J0aS5hcGkuU291cmNlSjH5SdlLSkQCAAdJAAdhcGlIYXNoWgAIaGFzTWFjcm9aABBoYXNQYWNrYWdlT2JqZWN0TAAYX2ludGVybmFsT25seV9uYW1lSGFzaGVzdAAkTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoZXM7TAADYXBpdAAVTHhzYnRpL2FwaS9Tb3VyY2VBUEk7TAALY29tcGlsYXRpb250ABdMeHNidGkvYXBpL0NvbXBpbGF0aW9uO1sABGhhc2h0AAJbQnhweZ9v2AAAc3IAInhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoZXNU2r6Z+tTsTAIAAlsAD2ltcGxpY2l0TWVtYmVyc3QAI1tMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2g7WwAOcmVndWxhck1lbWJlcnNxAH4AB3hwdXIAI1tMeHNidGkuYXBpLl9pbnRlcm5hbE9ubHlfTmFtZUhhc2g7SVqAtt2Wi/QCAAB4cAAAAAB1cQB+AAkAAAAVc3IAIHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoWw71InY4V88CAAJJAARoYXNoTAAEbmFtZXQAEkxqYXZhL2xhbmcvU3RyaW5nO3hwVR0LoXQABm5vdGlmeXNxAH4ADDRq/CV0AAR3YWl0c3EAfgAMTUHXSnQADSRhc0luc3RhbmNlT2ZzcQB+AAwmBpNAdAAGZXF1YWxzc3EAfgAM01FRfHQADGFzSW5zdGFuY2VPZnNxAH4ADB/+G610AAxzeW5jaHJvbml6ZWRzcQB+AAzNFnK9dAANJGlzSW5zdGFuY2VPZnNxAH4ADAGqkBF0AAlub3RpZnlBbGxzcQB+AAzjs1X+dAAMaXNJbnN0YW5jZU9mc3EAfgAMOTtH03QAAj09c3EAfgAM33nbSHQABWNsb25lc3EAfgAMkh7Fj3QAD21hdGNoTGlrZWxpaG9vZHNxAH4ADLxC2Yp0AAVMb2dpY3NxAH4ADHDX8jx0AAh0b1N0cmluZ3NxAH4ADJxDOH50AAIhPXNxAH4ADDX9LsR0AAhnZXRDbGFzc3NxAH4ADN7R9gl0AAJuZXNxAH4ADOMxl0J0AAJlcXNxAH4ADOFYEdt0AAIjI3NxAH4ADPgpi1B0AAhmaW5hbGl6ZXNxAH4ADEPM6Al0AAhoYXNoQ29kZXNyABN4c2J0aS5hcGkuU291cmNlQVBJuV6n+SkjOKQCAAJbAAtkZWZpbml0aW9uc3QAF1tMeHNidGkvYXBpL0RlZmluaXRpb247WwAIcGFja2FnZXN0ABRbTHhzYnRpL2FwaS9QYWNrYWdlO3hwdXIAF1tMeHNidGkuYXBpLkRlZmluaXRpb247iMlc57TjXg4CAAB4cAAAAAFzcgATeHNidGkuYXBpLkNsYXNzTGlrZYM0HKHfsJdsAgAETAAOZGVmaW5pdGlvblR5cGV0ABpMeHNidGkvYXBpL0RlZmluaXRpb25UeXBlO1sAEHNhdmVkQW5ub3RhdGlvbnN0ABNbTGphdmEvbGFuZy9TdHJpbmc7TAAIc2VsZlR5cGV0ABBMeHNidGkvYXBpL0xhenk7TAAJc3RydWN0dXJlcQB+AEF4cgAheHNidGkuYXBpLlBhcmFtZXRlcml6ZWREZWZpbml0aW9u+RFusdVQPOICAAFbAA50eXBlUGFyYW1ldGVyc3QAGltMeHNidGkvYXBpL1R5cGVQYXJhbWV0ZXI7eHIAFHhzYnRpLmFwaS5EZWZpbml0aW9uhyob6HFC40YCAARMAAZhY2Nlc3N0ABJMeHNidGkvYXBpL0FjY2VzcztbAAthbm5vdGF0aW9uc3QAF1tMeHNidGkvYXBpL0Fubm90YXRpb247TAAJbW9kaWZpZXJzdAAVTHhzYnRpL2FwaS9Nb2RpZmllcnM7TAAEbmFtZXEAfgANeHBzcgAQeHNidGkuYXBpLlB1YmxpY7pYPa5sLWBCAgAAeHIAEHhzYnRpLmFwaS5BY2Nlc3PdYpr4HWMxSAIAAHhwdXIAF1tMeHNidGkuYXBpLkFubm90YXRpb24765frGRD2jUgCAAB4cAAAAABzcgATeHNidGkuYXBpLk1vZGlmaWVyc5fnYdwTJnuzAgABQgAFZmxhZ3N4cABxAH4AJ3VyABpbTHhzYnRpLmFwaS5UeXBlUGFyYW1ldGVyO9ltJg8onfK2AgAAeHAAAAAAfnIAGHhzYnRpLmFwaS5EZWZpbml0aW9uVHlwZQAAAAAAAAAAEgAAeHIADmphdmEubGFuZy5FbnVtAAAAAAAAAAASAAB4cHQABk1vZHVsZXVyABNbTGphdmEubGFuZy5TdHJpbmc7rdJW5+kde0cCAAB4cAAAAABzcgAheHNidGkuYXBpLkFic3RyYWN0TGF6eSRTdHJpY3RMYXp5DWYcaykWKrgCAAFMAAV2YWx1ZXQAEkxqYXZhL2xhbmcvT2JqZWN0O3hwc3IAE3hzYnRpLmFwaS5FbXB0eVR5cGW8/Z5GSTuJJAIAAHhyABR4c2J0aS5hcGkuU2ltcGxlVHlwZXJ4YoghI79AAgAAeHIADnhzYnRpLmFwaS5UeXBlP2rZIRZJqsoCAAB4cHNxAH4AWHNyABN4c2J0aS5hcGkuU3RydWN0dXJlqar5gJNv2AACAANMAAhkZWNsYXJlZHEAfgBBTAAJaW5oZXJpdGVkcQB+AEFMAAdwYXJlbnRzcQB+AEF4cQB+AF1zcQB+AFh1cQB+ADwAAAAAc3EAfgBYdXEAfgA8AAAAAHNxAH4AWHVyABFbTHhzYnRpLmFwaS5UeXBlO3T/pVp7+elBAgAAeHAAAAACc3IAFHhzYnRpLmFwaS5Qcm9qZWN0aW9u89KNVOlFpC0CAAJMAAJpZHEAfgANTAAGcHJlZml4dAAWTHhzYnRpL2FwaS9TaW1wbGVUeXBlO3hxAH4AXHQABk9iamVjdHNyABN4c2J0aS5hcGkuU2luZ2xldG9u/Kdf+M9W5EYCAAFMAARwYXRodAAQTHhzYnRpL2FwaS9QYXRoO3hxAH4AXHNyAA54c2J0aS5hcGkuUGF0aJs9XAjOpSeEAgABWwAKY29tcG9uZW50c3QAGltMeHNidGkvYXBpL1BhdGhDb21wb25lbnQ7eHB1cgAaW0x4c2J0aS5hcGkuUGF0aENvbXBvbmVudDtD2gl0LWcWdAIAAHhwAAAAA3NyAAx4c2J0aS5hcGkuSWSYMmyLN1PEQAIAAUwAAmlkcQB+AA14cgAXeHNidGkuYXBpLlBhdGhDb21wb25lbnRfmiJbLoafvAIAAHhwdAAEamF2YXNxAH4AdXQABGxhbmdzcgAOeHNidGkuYXBpLlRoaXPbCe2mzFpAXAIAAHhxAH4AdnNxAH4AaXQAA0FueXNxAH4AbXNxAH4AcHVxAH4AcwAAAAJzcQB+AHV0AAVzY2FsYXEAfgB8dXIAFFtMeHNidGkuYXBpLlBhY2thZ2U7WxMZN3CnJ6ECAAB4cAAAAABzcgAVeHNidGkuYXBpLkNvbXBpbGF0aW9u7frgw2rooEICAAJKAAlzdGFydFRpbWVbAAdvdXRwdXRzdAAaW0x4c2J0aS9hcGkvT3V0cHV0U2V0dGluZzt4cAAAAV18kkZFdXIAGltMeHNidGkuYXBpLk91dHB1dFNldHRpbmc7f2rC86eHpUICAAB4cAAAAAFzcgAXeHNidGkuYXBpLk91dHB1dFNldHRpbmd62ZpHdPsdewIAAkwAD291dHB1dERpcmVjdG9yeXEAfgANTAAPc291cmNlRGlyZWN0b3J5cQB+AA14cHQAWi9ob21lL2d1c3Rhdm8vUHJvamVjdHMvdGV4dGJvb2tzX2V4ZXJjaXNlcy9TYnQuaW4uQWN0aW9uL2tpdHRlbnMvdGFyZ2V0L3NjYWxhLTIuMTAvY2xhc3Nlc3QAAS91cgACW0Ks8xf4BghU4AIAAHhwAAAAFDnAoMP8XxXWj+O1ywHYnEIv5sLG
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> 
+rO0ABXNyABB4c2J0aS5hcGkuU291cmNlSjH5SdlLSkQCAAdJAAdhcGlIYXNoWgAIaGFzTWFjcm9aABBoYXNQYWNrYWdlT2JqZWN0TAAYX2ludGVybmFsT25seV9uYW1lSGFzaGVzdAAkTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoZXM7TAADYXBpdAAVTHhzYnRpL2FwaS9Tb3VyY2VBUEk7TAALY29tcGlsYXRpb250ABdMeHNidGkvYXBpL0NvbXBpbGF0aW9uO1sABGhhc2h0AAJbQnhwJAGTUQAAc3IAInhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoZXNU2r6Z+tTsTAIAAlsAD2ltcGxpY2l0TWVtYmVyc3QAI1tMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2g7WwAOcmVndWxhck1lbWJlcnNxAH4AB3hwdXIAI1tMeHNidGkuYXBpLl9pbnRlcm5hbE9ubHlfTmFtZUhhc2g7SVqAtt2Wi/QCAAB4cAAAAAB1cQB+AAkAAAAhc3IAIHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoWw71InY4V88CAAJJAARoYXNoTAAEbmFtZXQAEkxqYXZhL2xhbmcvU3RyaW5nO3hwtLKn93QABm5vdGlmeXNxAH4ADN8ecDN0AAR3YWl0c3EAfgAMkX9aDnQADmNvcHkkZGVmYXVsdCQyc3EAfgAMtgSzV3QADSRhc0luc3RhbmNlT2ZzcQB+AAxiW7YbdAAMcHJvZHVjdEFyaXR5c3EAfgAM8R47onQABmVxdWFsc3NxAH4ADP1jR9Z0ABBCdXllclByZWZlcmVuY2Vzc3EAfgAM0fLWCnQADGFzSW5zdGFuY2VPZnNxAH4ADF6XWIR0AAxzeW5jaHJvbml6ZWRzcQB+AAzO/o3vdAANJGlzSW5zdGFuY2VPZnNxAH4ADFpliOh0AAhjYW5FcXVhbHNxAH4ADPlGynt0AA1wcm9kdWN0UHJlZml4c3EAfgAMYdSHNHQACW5vdGlmeUFsbHNxAH4ADHm/b7V0AAphdHRyaWJ1dGVzc3EAfgAMWHYHcXQADGlzSW5zdGFuY2VPZnNxAH4ADDl3zIB0AAY8aW5pdD5zcQB+AAwP6xRCdAACaWRzcQB+AAwUGMi1dAACPT1zcQB+AAyP8SZYdAAFY2xvbmVzcQB+AAxFqaphdAAGJGluaXQkc3EAfgAMUeAv1XQABGNvcHlzcQB+AAz6CpqAdAAIdG9TdHJpbmdzcQB+AAw8wJ96dAACIT1zcQB+AAws8S64dAAIZ2V0Q2xhc3NzcQB+AAyUGsE0dAAGS2l0dGVuc3EAfgAM0bWPtnQADmNvcHkkZGVmYXVsdCQxc3EAfgAMWs+7vHQAAm5lc3EAfgAMwjrfAXQAAmVxc3EAfgAMM4JpQHQAD3Byb2R1Y3RJdGVyYXRvcnNxAH4ADAVcoQt0AAIjI3NxAH4ADAxNzaB0AAhmaW5hbGl6ZXNxAH4ADAU/wbZ0AA5wcm9kdWN0RWxlbWVudHNxAH4ADH98zr90AAhoYXNoQ29kZXNyABN4c2J0aS5hcGkuU291cmNlQVBJuV6n+SkjOKQCAAJbAAtkZWZpbml0aW9uc3QAF1tMeHNidGkvYXBpL0RlZmluaXRpb247WwAIcGFja2FnZXN0ABRbTHhzYnRpL2FwaS9QYWNrYWdlO3hwdXIAF1tMeHNidGkuYXBpLkRlZmluaXRpb247iMlc57TjXg4CAAB4cAAAAAJzcgATeHNidGkuYXBpLkNsYXNzTGlrZYM0HKHfsJdsAgAETAAOZGVmaW5pdGlvblR5cGV0ABpMeHNidGkvYXBpL0RlZmluaXRpb25UeXBlO1sAEHNhdmVkQW5ub3RhdGlvbnN0ABNbTGphdmEvbGFuZy9TdHJpbmc7TAAIc2VsZlR5cGV0ABBMeHNidGkvYXBpL0xhenk7TAAJc3RydWN0dXJlcQB+AFl4cgAheHNidGkuYXBpLlBhcmFtZXRlcml6ZWREZWZpbml0aW9u+RFusdVQPOICAAFbAA50eXBlUGFyYW1ldGVyc3QAGltMeHNidGkvYXBpL1R5cGVQYXJhbWV0ZXI7eHIAFHhzYnRpLmFwaS5EZWZpbml0aW9uhyob6HFC40YCAARMAAZhY2Nlc3N0ABJMeHNidGkvYXBpL0FjY2VzcztbAAthbm5vdGF0aW9uc3QAF1tMeHNidGkvYXBpL0Fubm90YXRpb247TAAJbW9kaWZpZXJzdAAVTHhzYnRpL2FwaS9Nb2RpZmllcnM7TAAEbmFtZXEAfgANeHBzcgAQeHNidGkuYXBpLlB1YmxpY7pYPa5sLWBCAgAAeHIAEHhzYnRpLmFwaS5BY2Nlc3PdYpr4HWMxSAIAAHhwdXIAF1tMeHNidGkuYXBpLkFubm90YXRpb24765frGRD2jUgCAAB4cAAAAABzcgATeHNidGkuYXBpLk1vZGlmaWVyc5fnYdwTJnuzAgABQgAFZmxhZ3N4cABxAH4AP3VyABpbTHhzYnRpLmFwaS5UeXBlUGFyYW1ldGVyO9ltJg8onfK2AgAAeHAAAAAAfnIAGHhzYnRpLmFwaS5EZWZpbml0aW9uVHlwZQAAAAAAAAAAEgAAeHIADmphdmEubGFuZy5FbnVtAAAAAAAAAAASAAB4cHQACENsYXNzRGVmdXIAE1tMamF2YS5sYW5nLlN0cmluZzut0lbn6R17RwIAAHhwAAAAAHNyACF4c2J0aS5hcGkuQWJzdHJhY3RMYXp5JFN0cmljdExhenkNZhxrKRYquAIAAUwABXZhbHVldAASTGphdmEvbGFuZy9PYmplY3Q7eHBzcgATeHNidGkuYXBpLkVtcHR5VHlwZbz9nkZJO4kkAgAAeHIAFHhzYnRpLmFwaS5TaW1wbGVUeXBlcnhiiCEjv0ACAAB4cgAOeHNidGkuYXBpLlR5cGU/atkhFkmqygIAAHhwc3EAfgBwc3IAE3hzYnRpLmFwaS5TdHJ1Y3R1cmWpqvmAk2/YAAIAA0wACGRlY2xhcmVkcQB+AFlMAAlpbmhlcml0ZWRxAH4AWUwAB3BhcmVudHNxAH4AWXhxAH4AdXNxAH4AcHVxAH4AVAAAAABzcQB+AHB1cQB+AFQAAAAAc3EAfgBwdXIAEVtMeHNidGkuYXBpLlR5cGU7dP+lWnv56UECAAB4cAAAAAZzcgAUeHNidGkuYXBpLlByb2plY3Rpb27z0o1U6UWkLQIAAkwAAmlkcQB+AA1MAAZwcmVmaXh0ABZMeHNidGkvYXBpL1NpbXBsZVR5cGU7eHEAfgB0dAAMU2VyaWFsaXphYmxlc3IAE3hzYnRpLmFwaS5TaW5nbGV0b278p1/4z1bkRgIAAUwABHBhdGh0ABBMeHNidGkvYXBpL1BhdGg7eHEAfgB0c3IADnhzYnRpLmFwaS5QYXRomz1cCM6lJ4QCAAFbAApjb21wb25lbnRzdAAaW0x4c2J0aS9hcGkvUGF0aENvbXBvbmVudDt4cHVyABpbTHhzYnRpLmFwaS5QYXRoQ29tcG9uZW50O0PaCXQtZxZ0AgAAeHAAAAACc3IADHhzYnRpLmFwaS5JZJgybIs3U8RAAgABTAACaWRxAH4ADXhyABd4c2J0aS5hcGkuUGF0aENvbXBvbmVudF+aIlsuhp+8AgAAeHB0AAVzY2FsYXNyAA54c2J0aS5hcGkuVGhpc9sJ7abMWkBcAgAAeHEAfgCOc3EAfgCBcQB+AIRzcQB+AIVzcQB+AIh1cQB+AIsAAAADc3EAfgCNdAAEamF2YXNxAH4AjXQAAmlvcQB+AJJzcQB+AIF0AAdQcm9kdWN0cQB+AIdzcQB+AIF0AAZFcXVhbHNxAH4Ah3NxAH4AgXQABk9iamVjdHNxAH4AhXNxAH4AiHVxAH4AiwAAAANzcQB+AI1xAH4AmHNxAH4AjXQABGxhbmdxAH4AknNxAH4AgXQAA0FueXEAfgCHc3EAfgBWcQB+AGN1cQB+AGQAAAAAc3EAfgBmAHEAfgAbdXEAfgBoAAAAAHEAfgBsdXEAfgBuAAAAAHNxAH4AcHEAfgB2c3EAfgBwc3EAfgB4c3EAfgBwdXEAfgBUAAAAAHNxAH4AcHVxAH4AVAAAAABzcQB+AHB1cQB+AH8AAAAGc3EAfgCBcQB+AIRzcQB+AIVzcQB+AIh1cQB+AIsAAAACc3EAfgCNcQB+AJBxAH4AknNxAH4AgXEAfgCEc3EAfgCFc3EAfgCIdXEAfgCLAAAAA3NxAH4AjXEAfgCYc3EAfgCNdAACaW9xAH4AknNxAH4AgXEAfgCccQB+ALhzcQB+AIF0AAZFcXVhbHNxAH4AuHNxAH4AgXEAfgCgc3EAfgCFc3EAfgCIdXEAfgCLAAAAA3NxAH4AjXEAfgCYc3EAfgCNcQB+AKZxAH4AknNxAH4AgXEAfgCocQB+ALh1cgAUW0x4c2J0aS5hcGkuUGFja2FnZTtbExk3cKcnoQIAAHhwAAAAAHNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABXXyMPQ91cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5cQB+AA1MAA9zb3VyY2VEaXJlY3RvcnlxAH4ADXhwdABaL2hvbWUvZ3VzdGF2by9Qcm9qZWN0cy90ZXh0Ym9va3NfZXhlcmNpc2VzL1NidC5pbi5BY3Rpb24va2l0dGVucy90YXJnZXQvc2NhbGEtMi4xMC9jbGFzc2VzdAABL3VyAAJbQqzzF/gGCFTgAgAAeHAAAAAUBmbV3amASt8309fkyXSJyQL+fpo=
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/PreownedKittens.scala -> 
+rO0ABXNyABB4c2J0aS5hcGkuU291cmNlSjH5SdlLSkQCAAdJAAdhcGlIYXNoWgAIaGFzTWFjcm9aABBoYXNQYWNrYWdlT2JqZWN0TAAYX2ludGVybmFsT25seV9uYW1lSGFzaGVzdAAkTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoZXM7TAADYXBpdAAVTHhzYnRpL2FwaS9Tb3VyY2VBUEk7TAALY29tcGlsYXRpb250ABdMeHNidGkvYXBpL0NvbXBpbGF0aW9uO1sABGhhc2h0AAJbQnhwo0dt7QAAc3IAInhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoZXNU2r6Z+tTsTAIAAlsAD2ltcGxpY2l0TWVtYmVyc3QAI1tMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2g7WwAOcmVndWxhck1lbWJlcnNxAH4AB3hwdXIAI1tMeHNidGkuYXBpLl9pbnRlcm5hbE9ubHlfTmFtZUhhc2g7SVqAtt2Wi/QCAAB4cAAAAAB1cQB+AAkAAAAZc3IAIHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoWw71InY4V88CAAJJAARoYXNoTAAEbmFtZXQAEkxqYXZhL2xhbmcvU3RyaW5nO3hwpibCUnQABm5vdGlmeXNxAH4ADOUjx0J0AAR3YWl0c3EAfgAMzr4m6HQADSRhc0luc3RhbmNlT2ZzcQB+AAyWFhRbdAAGZXF1YWxzc3EAfgAMDOZctnQADGFzSW5zdGFuY2VPZnNxAH4ADPzjFON0AA5leGVjdXRpb25TdGFydHNxAH4ADOOUiYN0AAxzeW5jaHJvbml6ZWRzcQB+AAxy8M4SdAANJGlzSW5zdGFuY2VPZnNxAH4ADHHstWV0AARtYWluc3EAfgAMGKInrnQACW5vdGlmeUFsbHNxAH4ADA67ze50AAxpc0luc3RhbmNlT2ZzcQB+AAweq3tedAACPT1zcQB+AAzfYtzAdAAFY2xvbmVzcQB+AAwtHdc3dAAGJGluaXQkc3EAfgAM1Y9ys3QACHRvU3RyaW5nc3EAfgAMAZnPt3QABGFyZ3NzcQB+AAzIW9+6dAACIT1zcQB+AAzJz3ZzdAAIZ2V0Q2xhc3NzcQB+AAxovql3dAACbmVzcQB+AAzie+w6dAACZXFzcQB+AAwjhq8ndAAPUHJlb3duZWRLaXR0ZW5zc3EAfgAMWqtjC3QAC2RlbGF5ZWRJbml0c3EAfgAMvlN9WnQAAiMjc3EAfgAMxoXTM3QACGZpbmFsaXplc3EAfgAMiSsFcnQACGhhc2hDb2Rlc3IAE3hzYnRpLmFwaS5Tb3VyY2VBUEm5Xqf5KSM4pAIAAlsAC2RlZmluaXRpb25zdAAXW0x4c2J0aS9hcGkvRGVmaW5pdGlvbjtbAAhwYWNrYWdlc3QAFFtMeHNidGkvYXBpL1BhY2thZ2U7eHB1cgAXW0x4c2J0aS5hcGkuRGVmaW5pdGlvbjuIyVzntONeDgIAAHhwAAAAAXNyABN4c2J0aS5hcGkuQ2xhc3NMaWtlgzQcod+wl2wCAARMAA5kZWZpbml0aW9uVHlwZXQAGkx4c2J0aS9hcGkvRGVmaW5pdGlvblR5cGU7WwAQc2F2ZWRBbm5vdGF0aW9uc3QAE1tMamF2YS9sYW5nL1N0cmluZztMAAhzZWxmVHlwZXQAEEx4c2J0aS9hcGkvTGF6eTtMAAlzdHJ1Y3R1cmVxAH4ASXhyACF4c2J0aS5hcGkuUGFyYW1ldGVyaXplZERlZmluaXRpb275EW6x1VA84gIAAVsADnR5cGVQYXJhbWV0ZXJzdAAaW0x4c2J0aS9hcGkvVHlwZVBhcmFtZXRlcjt4cgAUeHNidGkuYXBpLkRlZmluaXRpb26HKhvocULjRgIABEwABmFjY2Vzc3QAEkx4c2J0aS9hcGkvQWNjZXNzO1sAC2Fubm90YXRpb25zdAAXW0x4c2J0aS9hcGkvQW5ub3RhdGlvbjtMAAltb2RpZmllcnN0ABVMeHNidGkvYXBpL01vZGlmaWVycztMAARuYW1lcQB+AA14cHNyABB4c2J0aS5hcGkuUHVibGljulg9rmwtYEICAAB4cgAQeHNidGkuYXBpLkFjY2Vzc91imvgdYzFIAgAAeHB1cgAXW0x4c2J0aS5hcGkuQW5ub3RhdGlvbjvrl+sZEPaNSAIAAHhwAAAAAHNyABN4c2J0aS5hcGkuTW9kaWZpZXJzl+dh3BMme7MCAAFCAAVmbGFnc3hwAHEAfgA3dXIAGltMeHNidGkuYXBpLlR5cGVQYXJhbWV0ZXI72W0mDyid8rYCAAB4cAAAAAB+cgAYeHNidGkuYXBpLkRlZmluaXRpb25UeXBlAAAAAAAAAAASAAB4cgAOamF2YS5sYW5nLkVudW0AAAAAAAAAABIAAHhwdAAGTW9kdWxldXIAE1tMamF2YS5sYW5nLlN0cmluZzut0lbn6R17RwIAAHhwAAAAAHNyACF4c2J0aS5hcGkuQWJzdHJhY3RMYXp5JFN0cmljdExhenkNZhxrKRYquAIAAUwABXZhbHVldAASTGphdmEvbGFuZy9PYmplY3Q7eHBzcgATeHNidGkuYXBpLkVtcHR5VHlwZbz9nkZJO4kkAgAAeHIAFHhzYnRpLmFwaS5TaW1wbGVUeXBlcnhiiCEjv0ACAAB4cgAOeHNidGkuYXBpLlR5cGU/atkhFkmqygIAAHhwc3EAfgBgc3IAE3hzYnRpLmFwaS5TdHJ1Y3R1cmWpqvmAk2/YAAIAA0wACGRlY2xhcmVkcQB+AElMAAlpbmhlcml0ZWRxAH4ASUwAB3BhcmVudHNxAH4ASXhxAH4AZXNxAH4AYHVxAH4ARAAAAABzcQB+AGB1cQB+AEQAAAABc3IADXhzYnRpLmFwaS5EZWZSvp/ifLQ2aQIAAkwACnJldHVyblR5cGV0ABBMeHNidGkvYXBpL1R5cGU7WwAPdmFsdWVQYXJhbWV0ZXJzdAAaW0x4c2J0aS9hcGkvUGFyYW1ldGVyTGlzdDt4cQB+AEpxAH4AU3VxAH4AVAAAAABzcQB+AFYAcQB+AB91cQB+AFgAAAAAc3IAFHhzYnRpLmFwaS5Qcm9qZWN0aW9u89KNVOlFpC0CAAJMAAJpZHEAfgANTAAGcHJlZml4dAAWTHhzYnRpL2FwaS9TaW1wbGVUeXBlO3hxAH4AZHQABFVuaXRzcgATeHNidGkuYXBpLlNpbmdsZXRvbvynX/jPVuRGAgABTAAEcGF0aHQAEEx4c2J0aS9hcGkvUGF0aDt4cQB+AGRzcgAOeHNidGkuYXBpLlBhdGibPVwIzqUnhAIAAVsACmNvbXBvbmVudHN0ABpbTHhzYnRpL2FwaS9QYXRoQ29tcG9uZW50O3hwdXIAGltMeHNidGkuYXBpLlBhdGhDb21wb25lbnQ7Q9oJdC1nFnQCAAB4cAAAAAJzcgAMeHNidGkuYXBpLklkmDJsizdTxEACAAFMAAJpZHEAfgANeHIAF3hzYnRpLmFwaS5QYXRoQ29tcG9uZW50X5oiWy6Gn7wCAAB4cHQABXNjYWxhc3IADnhzYnRpLmFwaS5UaGlz2wntpsxaQFwCAAB4cQB+AIJ1cgAaW0x4c2J0aS5hcGkuUGFyYW1ldGVyTGlzdDv10zod8rNw7gIAAHhwAAAAAXNyABd4c2J0aS5hcGkuUGFyYW1ldGVyTGlzdNbFvBxkSXTjAgACWgAKaXNJbXBsaWNpdFsACnBhcmFtZXRlcnN0ABxbTHhzYnRpL2FwaS9NZXRob2RQYXJhbWV0ZXI7eHAAdXIAHFtMeHNidGkuYXBpLk1ldGhvZFBhcmFtZXRlcjvPuMVdpd21bQIAAHhwAAAAAXNyABl4c2J0aS5hcGkuTWV0aG9kUGFyYW1ldGVyH0WuF9NJsOoCAARaAApoYXNEZWZhdWx0TAAIbW9kaWZpZXJ0AB1MeHNidGkvYXBpL1BhcmFtZXRlck1vZGlmaWVyO0wABG5hbWVxAH4ADUwAA3RwZXEAfgBveHAAfnIAG3hzYnRpLmFwaS5QYXJhbWV0ZXJNb2RpZmllcgAAAAAAAAAAEgAAeHEAfgBbdAAFUGxhaW5xAH4ALXNyABd4c2J0aS5hcGkuUGFyYW1ldGVyaXplZBZs7mkDybt/AgACTAAIYmFzZVR5cGVxAH4AdlsADXR5cGVBcmd1bWVudHN0ABFbTHhzYnRpL2FwaS9UeXBlO3hxAH4AZHNxAH4AdXQABUFycmF5cQB+AHt1cgARW0x4c2J0aS5hcGkuVHlwZTt0/6Vae/npQQIAAHhwAAAAAXNxAH4AdXQABlN0cmluZ3NxAH4AeXNxAH4AfHVxAH4AfwAAAANzcQB+AIF0AARqYXZhc3EAfgCBdAAEbGFuZ3EAfgCGc3EAfgBgdXEAfgCZAAAABHNxAH4AdXQAA0FwcHEAfgB7c3EAfgB1dAALRGVsYXllZEluaXRxAH4Ae3NxAH4AdXQABk9iamVjdHEAfgCdc3EAfgB1dAADQW55cQB+AHt1cgAUW0x4c2J0aS5hcGkuUGFja2FnZTtbExk3cKcnoQIAAHhwAAAAAHNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABXXyKrQF1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5cQB+AA1MAA9zb3VyY2VEaXJlY3RvcnlxAH4ADXhwdABaL2hvbWUvZ3VzdGF2by9Qcm9qZWN0cy90ZXh0Ym9va3NfZXhlcmNpc2VzL1NidC5pbi5BY3Rpb24va2l0dGVucy90YXJnZXQvc2NhbGEtMi4xMC9jbGFzc2VzdAABL3VyAAJbQqzzF/gGCFTgAgAAeHAAAAAU3iHypWWdOumWiuVeEhjJBSDCl4g=
+external apis:
+0 items
+source infos:
+3 items
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Logic.scala -> 
+AAAAAAAAAAA=
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/Models.scala -> 
+AAAAAAAAAAA=
+/home/gustavo/Projects/textbooks_exercises/Sbt.in.Action/kittens/src/main/scala/PreownedKittens.scala -> 
+AAAAAAAAAAA=
+compilations:
+3 items
+0 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABXXyKrQF1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQAWi9ob21lL2d1c3Rhdm8vUHJvamVjdHMvdGV4dGJvb2tzX2V4ZXJjaXNlcy9TYnQuaW4uQWN0aW9uL2tpdHRlbnMvdGFyZ2V0L3NjYWxhLTIuMTAvY2xhc3Nlc3QAAS8=
+1 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABXXyMPQ91cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQAWi9ob21lL2d1c3Rhdm8vUHJvamVjdHMvdGV4dGJvb2tzX2V4ZXJjaXNlcy9TYnQuaW4uQWN0aW9uL2tpdHRlbnMvdGFyZ2V0L3NjYWxhLTIuMTAvY2xhc3Nlc3QAAS8=
+2 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABXXySRkV1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQAWi9ob21lL2d1c3Rhdm8vUHJvamVjdHMvdGV4dGJvb2tzX2V4ZXJjaXNlcy9TYnQuaW4uQWN0aW9uL2tpdHRlbnMvdGFyZ2V0L3NjYWxhLTIuMTAvY2xhc3Nlc3QAAS8=

@@ -1,1 +1,14 @@
 version
+tasks
+compile
+settings
+settings sourceDirectories
+settings sourceDirectory
+scalaSource
+compile
+run
+console
+compile
+console
+reload
+test
