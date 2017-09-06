@@ -1,6 +1,8 @@
 ## Getting started
 
-Setting up sbt sbt provides installation packages for most operating system variants at http:// www.scala-sbt.org/download.html
+### Setting up sbt
+
+ sbt provides installation packages for most operating system variants at http:// www.scala-sbt.org/download.html
 
 By default, sbt includes only the bare minimum it needs to launch builds. The first time you run a project, sbt needs to download the remaining portions required, as well as compile the local project’s build definition. This process happens only the first time a depen- dency is needed or when your build changes.
 
