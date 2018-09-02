@@ -1,0 +1,4 @@
+[0m[[0m[31merror[0m] [0m[0m/home/gustavo/Projects/textbooks_exercises/Scala.Microservices/ChirperPrimer/friend-api/src/main/scala/space.perpetual/chirper/friend/api/FriendService.scala:19:15: could not find implicit value for parameter requestSerializer: com.lightbend.lagom.scaladsl.api.deser.MessageSerializer[space.perpetual.chirper.friend.api.FriendId, _][0m
+[0m[[0m[31merror[0m] [0m[0m      pathCall("/api/users/:userId/friends", addFriend _),[0m
+[0m[[0m[31merror[0m] [0m[0m              ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m

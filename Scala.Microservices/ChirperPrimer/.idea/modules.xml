@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/chirperprimer.iml" filepath="$PROJECT_DIR$/.idea/modules/chirperprimer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/chirperprimer-build.iml" filepath="$PROJECT_DIR$/.idea/modules/chirperprimer-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/friend-api.iml" filepath="$PROJECT_DIR$/.idea/modules/friend-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/friend-api-build.iml" filepath="$PROJECT_DIR$/.idea/modules/friend-api-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/friend-impl.iml" filepath="$PROJECT_DIR$/.idea/modules/friend-impl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/friend-impl-build.iml" filepath="$PROJECT_DIR$/.idea/modules/friend-impl-build.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,7 @@
+GET / controllers.HomeController.index
+GET /:name controllers.HomeController.hello(name: String)
+POST /users controllers.HomeController.addUser
+
+GET  /auth/index  controllers.LoginController.index
+GET  /auth/logout controllers.LoginController.logout
+GET  /auth/login  controllers.LoginController.login(name:String, password: String)

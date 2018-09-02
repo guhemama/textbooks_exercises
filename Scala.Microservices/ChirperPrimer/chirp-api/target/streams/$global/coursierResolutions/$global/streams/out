@@ -1,0 +1,5 @@
+[error] coursier.ResolutionException: Encountered 1 error(s) in dependency resolution:
+[error]     com.fasterxml.jackson.module:jackson-module-scala_2.12:2.7.3:
+[error]         not found:
+[error]             /home/gustavo/.ivy2/local/com.fasterxml.jackson.module/jackson-module-scala_2.12/2.7.3/ivys/ivy.xml
+[error]             https://repo1.maven.org/maven2/com/fasterxml/jackson/module/jackson-module-scala_2.12/2.7.3/jackson-module-scala_2.12-2.7.3.pom

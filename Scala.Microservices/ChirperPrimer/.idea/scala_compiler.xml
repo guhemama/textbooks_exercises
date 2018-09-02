@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ScalaCompilerConfiguration">
+    <profile name="sbt 1" modules="chirperprimer" />
+    <profile name="sbt 2" modules="activity-stream-impl,activity-stream-api,chirp-api,chirp-impl,friend-api,friend-impl">
+      <option name="experimental" value="true" />
+    </profile>
+    <profile name="sbt 3" modules="front-end">
+      <option name="experimental" value="true" />
+      <option name="deprecationWarnings" value="true" />
+      <option name="uncheckedWarnings" value="true" />
+      <parameters>
+        <parameter value="-encoding" />
+        <parameter value="utf8" />
+      </parameters>
+    </profile>
+  </component>
+</project>

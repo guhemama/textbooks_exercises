@@ -1,0 +1,4 @@
+[0m[[0m[31merror[0m] [0m[0m/home/gustavo/Projects/textbooks_exercises/Scala.Microservices/ChirperPrimer/friend-impl/src/main/scala/space/perpetual/chirper/friend/impl/FriendModule.scala:19:36: not found: type LagomDevModeComponent[0m
+[0m[[0m[31merror[0m] [0m[0m    new FriendModule(context) with LagomDevModeComponent[0m
+[0m[[0m[31merror[0m] [0m[0m                                   ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m
